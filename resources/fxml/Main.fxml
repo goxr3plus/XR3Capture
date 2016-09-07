@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+
+<fx:root prefHeight="144.0" prefWidth="272.0" style="-fx-background-color: transparent;" type="StackPane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane prefHeight="135.0" prefWidth="242.0" style="-fx-background-color: firebrick; -fx-background-radius: 15 0 0 15;">
+         <top>
+            <HBox prefHeight="27.0" prefWidth="287.0" spacing="5.0" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXCheckBox fx:id="wholeScreen" checkedColor="#0dbf66" contentDisplay="CENTER" graphicTextGap="2.0" prefHeight="0.0" prefWidth="118.0" style="-fx-text-fill: white; -fx-font-weight: bold;" text="Whole screen" translateY="5.0" unCheckedColor="BLACK">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXCheckBox>
+                  <JFXButton fx:id="help" style="-fx-font-weight: bold; -fx-text-fill: white;" text="Help">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="fixPosition" style="-fx-font-weight: bold; -fx-text-fill: white;" text="Fix-&gt;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="exitButton" style="-fx-font-weight: bold; -fx-text-fill: white;" text="Exit">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></JFXButton>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="5.0" />
+               </BorderPane.margin>
+            </HBox>
+         </top>
+         <left>
+            <JFXButton fx:id="captureButton" text=" " BorderPane.alignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/capture.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </left>
+         <center>
+            <JFXButton fx:id="openImageViewer" text=" " BorderPane.alignment="CENTER">
+               <graphic>
+                  <ImageView pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/imageViewer.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </center>
+      </BorderPane>
+      <Region fx:id="region" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.8); -fx-background-radius: 15 0 0 15;" visible="false" />
+      <ProgressIndicator fx:id="progressBar" visible="false" />
+   </children>
+   <padding>
+      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+   </padding>
+</fx:root>
