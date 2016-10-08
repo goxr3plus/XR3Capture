@@ -25,80 +25,81 @@ import javafx.util.Duration;
  *
  */
 public class MainScene extends StackPane implements Initializable {
-
+	
 	@FXML
-	JFXCheckBox wholeScreen;
-
+	JFXCheckBox			wholeScreen;
+	
 	@FXML
-	private JFXButton help;
-
+	private JFXButton	help;
+	
 	@FXML
-	private JFXButton fixPosition;
-
+	private JFXButton	fixPosition;
+	
 	@FXML
-	private JFXButton exitButton;
-
+	private JFXButton	exitButton;
+	
 	@FXML
-	private JFXButton captureButton;
-
+	private JFXButton	captureButton;
+	
 	@FXML
-	private JFXButton openImageViewer;
-
+	private JFXButton	openImageViewer;
+	
 	@FXML
-	private Region region;
-
+	private Region		region;
+	
 	@FXML
-	ProgressIndicator progressBar;
-
+	ProgressIndicator	progressBar;
+	
 	// Notification
-	Notifications notification = Notifications.create().title("Information").text(
-			"After you have pressed capture button:\nTo capture the screen press [ENTER]\nTo cancel the capture press [ESCAPE]");
-
+	Notifications		notification	= Notifications.create().title("Information").text(
+			"AFTER YOU HAVE PRESSED THE CAPTURE BUTTON:\n\nSave Image-> [ENTER]\nGo to main screen->[ESCAPE]\n\nSelect whole screen->[CTRL+A]\nResize selection rectangle->[ARROWS or SHIFT+ARROWS or CTRL+ARROWS]\n ");
+	
 	/**
 	 * Constructor
 	 */
 	public MainScene() {
-
+		
 		// FXMLLOADER
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Main.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
-
+		
 		try {
 			loader.load();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		
 	}
-
+	
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-
+	public void initialize(URL location , ResourceBundle resources) {
+		
 		// captureButton
 		captureButton.setOnAction(a -> Main.captureWindow.prepareForCapture());
-
+		
 		// exitButton
 		exitButton.setOnAction(a -> Platform.exit());
-
+		
 		// fixPosition
 		fixPosition.setOnAction(a -> Main.fixWindowPosition());
-
+		
 		// help
-		help.setOnAction(a -> notification.hideAfter(Duration.millis(3000)).show());
-
+		help.setOnAction(a -> notification.hideAfter(Duration.millis(10000)).show());
+		
 		// region
 		region.visibleProperty().bind(progressBar.visibleProperty());
-
+		
 		// openImageViewer
 		openImageViewer.setOnAction(ac -> {
-			Notifications.create().title("Processing").text("Opening XR3ImageViewer....").hideAfter(Duration.millis(2000)).show();
+			Notifications.create().title("Processing").text("Opening XR3ImageViewer....")
+					.hideAfter(Duration.millis(2000)).show();
 			try {
 				Runtime.getRuntime().exec("java -jar XR3ImageViewer.jar");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		});
-
+		
 	}
 }
