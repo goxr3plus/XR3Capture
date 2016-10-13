@@ -65,7 +65,6 @@ public class CaptureWindow extends Stage {
 	private int				rectWidth;
 	private int				rectHeight;
 	
-	private Color			foreground		= Color.rgb(255, 167, 0);
 	private Color			background		= Color.rgb(0, 0, 0, 0.3);
 	
 	// Service
@@ -149,101 +148,18 @@ public class CaptureWindow extends Stage {
 			repaintCanvas();
 		});
 		
-		// -------------Read the below to understand the Code-------------------
+		addKeyHandlers();
+		addKeyAnimationTimer();
 		
-		// the default prototype of the below code is
-		// 1->when the user is pressing RIGHT ARROW -> The rectangle is
-		// increasing from the right side
-		// 2->when the user is pressing LEFT ARROW -> The rectangle is
-		// decreasing from the right side
-		// 3->when the user is pressing UP ARROW -> The rectangle is increasing
-		// from the up side
-		// 4->when the user is pressing DOWN ARROW -> The rectangle is
-		// decreasing from the up side
-		
-		// mention that when the shit key is being down then the rectangle is
-		// increasing or decreasing from the opposite sides
-		
-		getScene().setOnKeyPressed(key -> {
-			if (key.isShiftDown())
-				shiftPressed.set(true);
-			
-			if (key.getCode() == KeyCode.RIGHT)
-				rightPressed.set(true);
-			
-			if (key.getCode() == KeyCode.LEFT)
-				leftPressed.set(true);
-			
-			if (key.getCode() == KeyCode.UP)
-				upPressed.set(true);
-			
-			if (key.getCode() == KeyCode.DOWN)
-				downPressed.set(true);
-		});
-		
-		getScene().setOnKeyReleased(key -> {
-			
-			if (key.getCode() == KeyCode.SHIFT)
-				shiftPressed.set(false);
-			
-			if (key.getCode() == KeyCode.RIGHT) {
-				if (key.isControlDown()) {
-					xNow = (int) getWidth();
-					repaintCanvas();
-				}
-				rightPressed.set(false);
-			}
-			
-			if (key.getCode() == KeyCode.LEFT) {
-				if (key.isControlDown()) {
-					xPressed = 0;
-					repaintCanvas();
-				}
-				leftPressed.set(false);
-			}
-			
-			if (key.getCode() == KeyCode.UP) {
-				if (key.isControlDown()) {
-					yPressed = 0;
-					repaintCanvas();
-				}
-				upPressed.set(false);
-			}
-			
-			if (key.getCode() == KeyCode.DOWN) {
-				if (key.isControlDown()) {
-					yNow = (int) getHeight();
-					repaintCanvas();
-				}
-				downPressed.set(false);
-			}
-			
-			if (key.getCode() == KeyCode.A && key.isControlDown())
-				selectWholeScreen();
-			
-			if (key.getCode() == KeyCode.ESCAPE) {
-				shiftPressed.set(false);
-				upPressed.set(false);
-				rightPressed.set(false);
-				downPressed.set(false);
-				leftPressed.set(false);
-				Main.stage.show();
-				close();
-			} else if (key.getCode() == KeyCode.ENTER) {
-				shiftPressed.set(false);
-				upPressed.set(false);
-				rightPressed.set(false);
-				downPressed.set(false);
-				leftPressed.set(false);
-				createImage();
-			}
-			
-		});
-		
-		getScene().setOnMouseMoved(m -> {
-			// if (getScene().getCursor() != Cursor.CROSSHAIR)
-			// getScene().setCursor(Cursor.CROSSHAIR);
-		});
+		// graphics context 2D
+		gc.setLineDashes(6);
+		gc.setFont(Font.font("null", FontWeight.BOLD, 14));
+	}
+	
+	/**
+	 * The Animation Timer for the Keys Pressed
+	 */
+	private void addKeyAnimationTimer() {
 		
 		AnimationTimer timer = new AnimationTimer() {
 			@Override
@@ -335,10 +251,108 @@ public class CaptureWindow extends Stage {
 				timer.stop();
 			}
 		});
+	}
+	
+	/**
+	 * Adds the KeyHandlers to the Scene
+	 */
+	private void addKeyHandlers() {
 		
-		// graphics context 2D
-		gc.setLineDashes(6);
-		gc.setFont(Font.font("null", FontWeight.BOLD, 14));
+		// -------------Read the below to understand the Code-------------------
+		
+		// the default prototype of the below code is
+		// 1->when the user is pressing RIGHT ARROW -> The rectangle is
+		// increasing from the right side
+		// 2->when the user is pressing LEFT ARROW -> The rectangle is
+		// decreasing from the right side
+		// 3->when the user is pressing UP ARROW -> The rectangle is increasing
+		// from the up side
+		// 4->when the user is pressing DOWN ARROW -> The rectangle is
+		// decreasing from the up side
+		
+		// mention that when the shit key is being down then the rectangle is
+		// increasing or decreasing from the opposite sides
+		
+		// keyPressed
+		getScene().setOnKeyPressed(key -> {
+			if (key.isShiftDown())
+				shiftPressed.set(true);
+			
+			if (key.getCode() == KeyCode.RIGHT)
+				rightPressed.set(true);
+			
+			if (key.getCode() == KeyCode.LEFT)
+				leftPressed.set(true);
+			
+			if (key.getCode() == KeyCode.UP)
+				upPressed.set(true);
+			
+			if (key.getCode() == KeyCode.DOWN)
+				downPressed.set(true);
+		});
+		
+		// keyReleased
+		getScene().setOnKeyReleased(key -> {
+			
+			if (key.getCode() == KeyCode.SHIFT)
+				shiftPressed.set(false);
+			
+			if (key.getCode() == KeyCode.RIGHT) {
+				if (key.isControlDown()) {
+					xNow = (int) getWidth();
+					repaintCanvas();
+				}
+				rightPressed.set(false);
+			}
+			
+			if (key.getCode() == KeyCode.LEFT) {
+				if (key.isControlDown()) {
+					xPressed = 0;
+					repaintCanvas();
+				}
+				leftPressed.set(false);
+			}
+			
+			if (key.getCode() == KeyCode.UP) {
+				if (key.isControlDown()) {
+					yPressed = 0;
+					repaintCanvas();
+				}
+				upPressed.set(false);
+			}
+			
+			if (key.getCode() == KeyCode.DOWN) {
+				if (key.isControlDown()) {
+					yNow = (int) getHeight();
+					repaintCanvas();
+				}
+				downPressed.set(false);
+			}
+			
+			if (key.getCode() == KeyCode.A && key.isControlDown())
+				selectWholeScreen();
+			
+			if (key.getCode() == KeyCode.ESCAPE) {
+				deActivateAllKeys();
+				Main.stage.show();
+				close();
+			} else if (key.getCode() == KeyCode.ENTER) {
+				deActivateAllKeys();
+				createImage();
+			}
+			
+		});
+	}
+	
+	/**
+	 * Deactivates the keys contained into this method
+	 */
+	private void deActivateAllKeys() {
+		shiftPressed.set(false);
+		upPressed.set(false);
+		rightPressed.set(false);
+		downPressed.set(false);
+		leftPressed.set(false);
 	}
 	
 	/**
@@ -380,7 +394,7 @@ public class CaptureWindow extends Stage {
 		gc.clearRect(0, 0, getWidth(), getHeight());
 		
 		// draw the actual rectangle
-		gc.setStroke(foreground);
+		gc.setStroke(Color.AQUA);
 		gc.setFill(background);
 		gc.setLineWidth(2);
 		
@@ -407,12 +421,13 @@ public class CaptureWindow extends Stage {
 		// Show the Size
 		double middle = UPPER_LEFT_X + rectWidth / 2.00;
 		gc.setLineWidth(2);
-		gc.setStroke(Color.ORANGE);
-		gc.strokeRect(middle - 77, UPPER_LEFT_Y - 25.00, 78, 25);
+		gc.setStroke(Color.AQUA);
+		gc.strokeRect(middle - 78, UPPER_LEFT_Y < 25 ? UPPER_LEFT_Y + 1 : UPPER_LEFT_Y - 24.00, 79, 25);
 		gc.setFill(Color.rgb(0, 0, 00, 0.9));
-		gc.fillRect(middle - 77, UPPER_LEFT_Y - 23.00, 77, 23);
-		gc.setFill(Color.RED);
-		gc.fillText(rectWidth + "," + rectHeight, middle - 77 + 9, UPPER_LEFT_Y - 8.00);
+		gc.fillRect(middle - 77, UPPER_LEFT_Y < 25 ? UPPER_LEFT_Y + 1 : UPPER_LEFT_Y - 23.00, 77, 23);
+		gc.setFill(Color.WHITE);
+		gc.fillText(rectWidth + "," + rectHeight, middle - 77 + 9,
+				UPPER_LEFT_Y < 25 ? UPPER_LEFT_Y + 17.00 : UPPER_LEFT_Y - 6.00);
 	}
 	
 	/**
@@ -432,11 +447,7 @@ public class CaptureWindow extends Stage {
 	public void prepareForCapture() {
 		show();
 		repaintCanvas();
-		if (Main.mainScene.wholeScreen.isSelected())
-			selectWholeScreen();
-		
 		Main.stage.close();
-		
 	}
 	
 	/**

@@ -27,13 +27,7 @@ import javafx.util.Duration;
 public class MainScene extends StackPane implements Initializable {
 	
 	@FXML
-	JFXCheckBox			wholeScreen;
-	
-	@FXML
 	private JFXButton	help;
-	
-	@FXML
-	private JFXButton	fixPosition;
 	
 	@FXML
 	private JFXButton	exitButton;
@@ -80,9 +74,6 @@ public class MainScene extends StackPane implements Initializable {
 		
 		// exitButton
 		exitButton.setOnAction(a -> Platform.exit());
-		
-		// fixPosition
-		fixPosition.setOnAction(a -> Main.fixWindowPosition());
 		
 		// help
 		help.setOnAction(a -> notification.hideAfter(Duration.millis(10000)).show());

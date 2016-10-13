@@ -1,0 +1,9 @@
+
+
+.topButton{
+	-fx-text-fill:white;
+	-fx-font-weight:bold;
+	-fx-border-color:black;
+	-fx-border-width:1.0;
+	-fx-border-style:dotted;	
+}
