@@ -5,4 +5,4 @@ Is a JavaFX application which allows you to take screen shots of your computer a
 SourceForge:(https://sourceforge.net/projects/xr3capture/)
 
 ## Youtube Demostration
-[![Demostration of XR3Capture](http://img.youtube.com/vi/xMzm60JrJVQ/0.jpg)](https://www.youtube.com/watch?v=xMzm60JrJVQ)
+[![Demostration of XR3Capture](http://img.youtube.com/vi/jTdwkKmZUZk/0.jpg)](https://www.youtube.com/watch?v=jTdwkKmZUZk)
