@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="244.0" prefWidth="455.0" styleClass="settings-controller" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Settings">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <top>
+                        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="329.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Slider fx:id="timeSlider" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" minorTickCount="1" prefHeight="14.0" prefWidth="131.0" showTickLabels="true" showTickMarks="true">
+                                 <HBox.margin>
+                                    <Insets right="10.0" top="15.0" />
+                                 </HBox.margin>
+                              </Slider>
+                              <JFXToggleButton fx:id="waitTimeButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="187.0" styleClass="wait-time-button" text="Wait Time(sec/milli)" />
+                           </children>
+                        </HBox>
+                     </top>
+                  </BorderPane>
+               </content>
+          </Tab>
+          <Tab text="About+Help">
+               <content>
+                  <JFXTextArea editable="false" focusColor="#a87c40" text="---------------------------------- CREATOR---------------------------------------&#10;&#10;GOXR3PLUS (www.goxr3plus.co.nf)&#10;&#10;&#10;-------------------------------------HELP------------------------------------------&#10;&#10;Press the Capture Button to go on Capture Mode.&#10;&#10;Hold and Drag the mouse to select an area of your computer screen.&#10;&#10;Press [ ENTER ] when you are ready.&#10;&#10;After you have pressed [ ENTER ] select a place to save your image ,along with the type you want(.png,.jpeg,.jpg,.bmp,.gif)&#10;&#10;By default the image will by saved as (.png)&#10;&#10;-----------------------------------ShortCuts---------------------------------------&#10;&#10;You can change the size of the selected area using arrow keys(UP,DOWN,LEFT,RIGHT).The default resizing is done to RIGHT AND UP SIDES OF THE RECTANGLE.To change that simply hold shift button and use the above buttons and the resize will happen on LEFT AND UP SIDES OF THE RECTANGLE.&#10;&#10;SELECT WHOLE SCREEN-&gt;[ CONTROL + A]&#10;&#10;-&gt;EXTENDING RECTANGLE TO ONE SCREEN AXIS:&#10;      Extend rectangle to the RIGHT-&gt;[   ]&#10;      Extend rectangle to the  LEFT-&gt;[   ]&#10;      Extend rectangle to the  TOP-&gt;[   ]&#10;      Extend rectangle to the  BOTTOM-&gt;[   ]&#10;" wrapText="true" />
+               </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
