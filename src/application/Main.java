@@ -83,7 +83,7 @@ public class Main extends Application {
 		startPositionFixThread();
 		
 		// Check MaryTTS
-		textToSpeech.speak("Hello my name is Mary!");
+		//textToSpeech.speak("Hello my name is Mary!")
 	}
 	
 	/**

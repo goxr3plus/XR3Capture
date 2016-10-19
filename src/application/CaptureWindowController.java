@@ -429,7 +429,7 @@ public class CaptureWindowController extends Stage {
 					try {
 						
 						// MaryTTS
-						Main.textToSpeech.setVoice("cmu-slt-hsmm");				
+						Main.textToSpeech.setVoice("cmu-slt-hsmm");
 						Main.textToSpeech.speak("Drop the Bomb!");
 						
 						// Play Allahu Akbar
@@ -566,7 +566,8 @@ public class CaptureWindowController extends Stage {
 		repaintCanvas();
 		Main.stage.close();
 		Main.settingsController.close();
-		Main.textToSpeech.speak("Select an area of the screen dragging your mouse and then press Enter or Space");
+		if (Main.settingsController.getMarryTTSToggle().isSelected())
+			Main.textToSpeech.speak("Select an area of the screen dragging your mouse and then press Enter or Space");
 	}
 	
 	/**
