@@ -4,9 +4,13 @@ import java.util.concurrent.CountDownLatch;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import application.controllers.CaptureWindowController;
+import application.controllers.MainWindowController;
+import application.controllers.SettingsWindowController;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.NodeOrientation;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -22,27 +26,29 @@ import marytts.TextToSpeech;
  */
 public class Main extends Application {
 	
-	/**
-	 * 
-	 */
-	public static Stage						stage;
-	/**
-	 * 
-	 */
-	public static ApplicationController		applicationController;
-	/**
-	 * The Capture Window of the application
-	 */
-	public static CaptureWindowController	captureWindowController;
-	/**
-	 * 
-	 */
-	public static SettingsController		settingsController;
+	Thread							daemon;
 	
 	/**
 	 * 
 	 */
-	public static TextToSpeech				textToSpeech	= new TextToSpeech();
+	public static Stage				stage;
+	/**
+	 * 
+	 */
+	public MainWindowController		mainWindowController;
+	/**
+	 * The Capture Window of the application
+	 */
+	public CaptureWindowController	captureWindowController;
+	/**
+	 * 
+	 */
+	public SettingsWindowController	settingsWindowController;
+	
+	/**
+	 * Test to Speech using MaryTTS Libraries
+	 */
+	public static TextToSpeech		textToSpeech	= new TextToSpeech();
 	
 	/**
 	 * Main method
@@ -58,42 +64,49 @@ public class Main extends Application {
 		
 		// stage
 		stage = primary;
-		stage.setTitle("XR3Capture V.6");
+		stage.setTitle("XR3Capture V.7");
 		stage.getIcons().add(new Image(getClass().getResourceAsStream("/image/icon.png")));
 		stage.initStyle(StageStyle.TRANSPARENT);
 		stage.setAlwaysOnTop(true);
 		
-		// CaptureWindowController
-		FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/fxml/CaptureWindowController.fxml"));
+		// MainWindowController
+		FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/fxml/MainWindowController.fxml"));
 		loader1.load();
-		captureWindowController = loader1.getController();
+		mainWindowController = loader1.getController();
+		
+		// CaptureWindowController
+		FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/fxml/CaptureWindowController.fxml"));
+		loader2.load();
+		captureWindowController = loader2.getController();
 		
 		// SettingsController
-		FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/fxml/SettingsController.fxml"));
-		loader2.load();
-		settingsController = loader2.getController();
+		FXMLLoader loader3 = new FXMLLoader(getClass().getResource("/fxml/SettingsWindowController.fxml"));
+		loader3.load();
+		settingsWindowController = loader3.getController();
 		
-		// ApplicationController
-		applicationController = new ApplicationController();
+		// Add References between controllers
+		mainWindowController.addControllerReferences(captureWindowController, settingsWindowController);
+		captureWindowController.addControllerReferences(mainWindowController, settingsWindowController);
+		settingsWindowController.addControllerReferences(mainWindowController, captureWindowController);
 		
 		// Finally
-		stage.setScene(new Scene(applicationController, 294, 210, Color.TRANSPARENT));
+		stage.setScene(new Scene(loader1.getRoot(), Color.TRANSPARENT));
 		stage.show();
 		
 		startPositionFixThread();
 		
 		// Check MaryTTS
-		//textToSpeech.speak("Hello my name is Mary!")
+		// textToSpeech.speak("Hello my name is Mary!")
 	}
 	
 	/**
 	 * This method is starting a Thread which is running all the time and is
 	 * fixing the position of the application on the screen
 	 */
-	private static void startPositionFixThread() {
+	private void startPositionFixThread() {
 		
 		// Check frequently for the Primary Screen Bounds
-		Thread daemon = new Thread(() -> {
+		daemon = new Thread(() -> {
 			// Run it until the application has been closed
 			while (true) {
 				
@@ -103,7 +116,12 @@ public class Main extends Application {
 				// Get VisualBounds of the Primary Screen
 				Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
 				Platform.runLater(() -> {
-					stage.setX(bounds.getMaxX() - stage.getWidth());
+					
+					if (mainWindowController.getRoot().getNodeOrientation() == NodeOrientation.LEFT_TO_RIGHT)
+						stage.setX(bounds.getMaxX() - stage.getWidth());
+					else
+						stage.setX(0);
+					
 					stage.setY(bounds.getMaxY() / 2 - stage.getHeight() / 2);
 					count.countDown();
 				});
@@ -114,6 +132,7 @@ public class Main extends Application {
 					// Sleep some time
 					Thread.sleep(500);
 				} catch (InterruptedException ex) {
+					daemon.interrupt();
 					Logger.getLogger(Main.class.getName()).log(Level.WARNING, null, ex);
 				}
 			}

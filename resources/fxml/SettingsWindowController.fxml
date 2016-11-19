@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="443.0" prefWidth="540.0" styleClass="settings-controller" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.SettingsWindowController">
+   <center>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Settings">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="NOT YET IMPLEMENTED" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font size="48.0" />
+                           </font></Label>
+                     </center>
+                     <top>
+                        <HBox prefHeight="62.0" prefWidth="530.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <JFXToggleButton fx:id="marryttsToggle" selected="true" text="MaryTTS Voice" />
+                              <JFXToggleButton fx:id="orientation" selected="true" text="Current : LEFT  -&gt; TO  -&gt; RIGHT" />
+                           </children>
+                        </HBox>
+                     </top>
+                  </BorderPane>
+               </content>
+          </Tab>
+          <Tab text="About+Help">
+               <content>
+                  <JFXTextArea editable="false" focusColor="#a87c40" text="---------------------------------- CREATOR---------------------------------------&#10;&#10;GOXR3PLUS (www.goxr3plus.co.nf)&#10;&#10;&#10;-------------------------------------HELP------------------------------------------&#10;&#10;**)Press the Capture Button to go on Capture Mode.&#10;&#10;**)To RETURN back to the main window press [ ESCAPE or BACKSPACE] key.&#10;&#10;Hold and Drag the mouse to select an area of your computer screen.&#10;&#10;Press [ ENTER  or SPACE_BAR] when you are ready.&#10;&#10;After you have pressed [ ENTER  or SPACE_BAR] select a place to save your image ,along with the type you want(.png,.jpeg,.jpg,.bmp,.gif)&#10;&#10;By default the image will by saved as (.png)&#10;&#10;-----------------------------------ShortCuts---------------------------------------&#10;&#10;You can change the size of the selected area using arrow keys(UP,DOWN,LEFT,RIGHT).The default resizing is done to RIGHT AND UP SIDES OF THE RECTANGLE.To change that simply hold [ SHIFT ]key and use the above buttons and the resize will happen on LEFT AND DOWN SIDES OF THE RECTANGLE.&#10;&#10;SELECT WHOLE SCREEN-&gt;[ CONTROL + A]&#10;&#10;-&gt;EXTENDING RECTANGLE TO ONE SCREEN AXIS:&#10;      Extend rectangle to the RIGHT-&gt;[   ]&#10;      Extend rectangle to the  LEFT-&gt;[   ]&#10;      Extend rectangle to the  TOP-&gt;[   ]&#10;      Extend rectangle to the  BOTTOM-&gt;[   ]&#10;" wrapText="true" />
+               </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>

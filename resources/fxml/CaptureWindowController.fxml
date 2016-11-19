@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.media.MediaView?>
 
-<StackPane fx:id="stackPane" prefHeight="406.0" prefWidth="514.0" style="-fx-background-color: rgb(0,0,0,0.01);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CaptureWindowController">
+<StackPane fx:id="stackPane" prefHeight="406.0" prefWidth="514.0" style="-fx-background-color: rgb(0,0,0,0.01);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.CaptureWindowController">
    <children>
       <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;">
          <children>
