@@ -33,7 +33,6 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -56,9 +55,6 @@ public class CaptureWindowController extends Stage {
 	@FXML
 	private Canvas				mainCanvas;
 	
-	@FXML
-	private MediaView			mediaView;
-	
 	// Random
 	Random						random			= new Random();
 	
@@ -69,12 +65,12 @@ public class CaptureWindowController extends Stage {
 	SFileChooser				fileSaver		= new SFileChooser();
 	
 	// Variables
-	int							xPressed		= 0;
-	int							yPressed		= 0;
-	int							xNow			= 0;
-	int							yNow			= 0;
-	private int					UPPER_LEFT_X	= 0;
-	private int					UPPER_LEFT_Y	= 0;
+	private int					xPressed		= 0;
+	private int					yPressed		= 0;
+	private int					xNow			= 0;
+	private int					yNow			= 0;
+	private int					upperLeftX		= 0;
+	private int					upperLeftY		= 0;
 	private int					rectWidth;
 	private int					rectHeight;
 	
@@ -122,7 +118,8 @@ public class CaptureWindowController extends Stage {
 	 * 
 	 */
 	@SuppressWarnings("hiding")
-	public void addControllerReferences(MainWindowController mainWindowController , SettingsWindowController settingsWindowController) {
+	public void addControllerReferences(MainWindowController mainWindowController ,
+			SettingsWindowController settingsWindowController) {
 		
 		this.mainWindowController = mainWindowController;
 		this.settingsWindowController = settingsWindowController;
@@ -290,83 +287,102 @@ public class CaptureWindowController extends Stage {
 		});
 		
 		AnimationTimer timer = new AnimationTimer() {
+			
+			private long	nextSecond	= 0L;
+			// private static final long ONE_SECOND_NANOS = 1_000_000_000L
+			private long	precisionLevel;
+			
 			@Override
-			public void handle(long timestamp) {
+			public void start() {
+				nextSecond = 0L;
+				precisionLevel = (long) ( settingsWindowController.getPrecisionSlider().getValue() * 1_000_000L );
+				super.start();
+			}
+			
+			@Override
+			public void handle(long nanos) {
 				
-				// With special key pressed
-				// (we want [LEFT] and [DOWN] side of the rectangle to be
-				// movable)
+				System.out.println("TimeStamp: " + nanos + " Current: " + nextSecond);
+				System.out.println("Milliseconds Delay: " + precisionLevel / 1_000_000);
 				
-				// No Special Key is Pressed
-				// (we want [RIGHT] and [UP] side of the rectangle to be
-				// movable)
-				
-				// ------------------------------
-				if (rightPressed.get()) {
-					if (shiftPressed.get()) { // Special Key?
-						if (xNow > xPressed) { // Mouse gone Right?
-							xPressed += 1;
+				if (nanos >= nextSecond) {
+					nextSecond = nanos + precisionLevel;
+					
+					// With special key pressed
+					// (we want [LEFT] and [DOWN] side of the rectangle to be
+					// movable)
+					
+					// No Special Key is Pressed
+					// (we want [RIGHT] and [UP] side of the rectangle to be
+					// movable)
+					
+					// ------------------------------
+					if (rightPressed.get()) {
+						if (shiftPressed.get()) { // Special Key?
+							if (xNow > xPressed) { // Mouse gone Right?
+								xPressed += 1;
+							} else {
+								xNow += 1;
+							}
 						} else {
-							xNow += 1;
-						}
-					} else {
-						if (xNow > xPressed) { // Mouse gone Right?
-							xNow += 1;
-						} else {
-							xPressed += 1;
+							if (xNow > xPressed) { // Mouse gone Right?
+								xNow += 1;
+							} else {
+								xPressed += 1;
+							}
 						}
 					}
-				}
-				
-				if (leftPressed.get()) {
-					if (shiftPressed.get()) { // Special Key?
-						if (xNow > xPressed) { // Mouse gone Right?
-							xPressed -= 1;
+					
+					if (leftPressed.get()) {
+						if (shiftPressed.get()) { // Special Key?
+							if (xNow > xPressed) { // Mouse gone Right?
+								xPressed -= 1;
+							} else {
+								xNow -= 1;
+							}
 						} else {
-							xNow -= 1;
-						}
-					} else {
-						if (xNow > xPressed) { // Mouse gone Right?
-							xNow -= 1;
-						} else {
-							xPressed -= 1;
-						}
-					}
-				}
-				
-				if (upPressed.get()) {
-					if (shiftPressed.get()) { // Special Key?
-						if (yNow > yPressed) { // Mouse gone UP?
-							yNow -= 1;
-						} else {
-							yPressed -= 1;
-						}
-					} else {
-						if (yNow > yPressed) { // Mouse gone UP?
-							yPressed -= 1;
-						} else {
-							yNow -= 1;
+							if (xNow > xPressed) { // Mouse gone Right?
+								xNow -= 1;
+							} else {
+								xPressed -= 1;
+							}
 						}
 					}
-				}
-				
-				if (downPressed.get()) {
-					if (shiftPressed.get()) { // Special Key?
-						if (yNow > yPressed) { // Mouse gone UP?
-							yNow += 1;
+					
+					if (upPressed.get()) {
+						if (shiftPressed.get()) { // Special Key?
+							if (yNow > yPressed) { // Mouse gone UP?
+								yNow -= 1;
+							} else {
+								yPressed -= 1;
+							}
 						} else {
-							yPressed += 1;
-						}
-					} else {
-						if (yNow > yPressed) { // Mouse gone UP?
-							yPressed += 1;
-						} else {
-							yNow += 1;
+							if (yNow > yPressed) { // Mouse gone UP?
+								yPressed -= 1;
+							} else {
+								yNow -= 1;
+							}
 						}
 					}
+					
+					if (downPressed.get()) {
+						if (shiftPressed.get()) { // Special Key?
+							if (yNow > yPressed) { // Mouse gone UP?
+								yNow += 1;
+							} else {
+								yPressed += 1;
+							}
+						} else {
+							if (yNow > yPressed) { // Mouse gone UP?
+								yPressed += 1;
+							} else {
+								yNow += 1;
+							}
+						}
+					}
+					
+					repaintCanvas();
 				}
-				
-				repaintCanvas();
 			}
 		};
 		
@@ -514,30 +530,30 @@ public class CaptureWindowController extends Stage {
 				: yPressed - yNow // UP
 		;
 		
-		UPPER_LEFT_X = // -------->UPPER_LEFT_X
+		upperLeftX = // -------->UPPER_LEFT_X
 				( xNow > xPressed ) ? xPressed // RIGHT
 						: xNow// LEFT
 		;
-		UPPER_LEFT_Y = // -------->UPPER_LEFT_Y
+		upperLeftY = // -------->UPPER_LEFT_Y
 				( yNow > yPressed ) ? yPressed // DOWN
 						: yNow // UP
 		;
 		
-		gc.strokeRect(UPPER_LEFT_X - 1.00, UPPER_LEFT_Y - 1.00, rectWidth + 2.00, rectHeight + 2.00);
-		gc.fillRect(UPPER_LEFT_X, UPPER_LEFT_Y, rectWidth, rectHeight);
+		gc.strokeRect(upperLeftX - 1.00, upperLeftY - 1.00, rectWidth + 2.00, rectHeight + 2.00);
+		gc.fillRect(upperLeftX, upperLeftY, rectWidth, rectHeight);
 		
 		// draw the circles
 		
 		// Show the Size
-		double middle = UPPER_LEFT_X + rectWidth / 2.00;
+		double middle = upperLeftX + rectWidth / 2.00;
 		gc.setLineWidth(1);
 		gc.setStroke(Color.AQUA);
-		gc.strokeRect(middle - 78, UPPER_LEFT_Y < 25 ? UPPER_LEFT_Y + 2 : UPPER_LEFT_Y - 26.00, 79, 25);
+		gc.strokeRect(middle - 78, upperLeftY < 25 ? upperLeftY + 2 : upperLeftY - 26.00, 79, 25);
 		gc.setFill(Color.rgb(0, 0, 00, 0.9));
-		gc.fillRect(middle - 77, UPPER_LEFT_Y < 25 ? UPPER_LEFT_Y + 2 : UPPER_LEFT_Y - 25.00, 77, 23);
+		gc.fillRect(middle - 77, upperLeftY < 25 ? upperLeftY + 2 : upperLeftY - 25.00, 77, 23);
 		gc.setFill(Color.WHITE);
 		gc.fillText(rectWidth + "," + rectHeight, middle - 77 + 9,
-				UPPER_LEFT_Y < 25 ? UPPER_LEFT_Y + 17.00 : UPPER_LEFT_Y - 6.00);
+				upperLeftY < 25 ? upperLeftY + 17.00 : upperLeftY - 6.00);
 	}
 	
 	/**
@@ -573,7 +589,7 @@ public class CaptureWindowController extends Stage {
 	 */
 	public int[] getRectangleBounds() {
 		
-		return new int[]{ UPPER_LEFT_X , UPPER_LEFT_Y , rectWidth , rectHeight };
+		return new int[]{ upperLeftX , upperLeftY , rectWidth , rectHeight };
 		
 	}
 	

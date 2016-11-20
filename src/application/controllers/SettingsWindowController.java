@@ -3,6 +3,7 @@
  */
 package application.controllers;
 
+import com.jfoenix.controls.JFXSlider;
 import com.jfoenix.controls.JFXToggleButton;
 
 import javafx.fxml.FXML;
@@ -27,6 +28,9 @@ public class SettingsWindowController extends Stage {
 	@FXML
 	private JFXToggleButton	orientation;
 	
+	@FXML
+	private JFXSlider		precisionSlider;
+	
 	// --------------------
 	MainWindowController	mainWindowController;
 	CaptureWindowController	captureWindowController;
@@ -47,7 +51,7 @@ public class SettingsWindowController extends Stage {
 			if (newValue) { // selected
 				mainWindowController.getRoot().setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
 				orientation.setText("Current : LEFT  -> TO  -> RIGHT");
-			}else {
+			} else {
 				mainWindowController.getRoot().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
 				orientation.setText("Current : RIGHT  -> TO  -> LEFT");
 			}
@@ -76,6 +80,14 @@ public class SettingsWindowController extends Stage {
 	 */
 	public JFXToggleButton getMarryTTSToggle() {
 		return marryttsToggle;
+	}
+	
+	/**
+	 * @return The precisionSlider
+	 * 
+	 */
+	public JFXSlider getPrecisionSlider() {
+		return precisionSlider;
 	}
 	
 }

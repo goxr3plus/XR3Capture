@@ -5,7 +5,7 @@
 	-fx-font-weight:bold;
 	-fx-border-color:orange;
 	-fx-border-width:1.0;
-	-fx-border-style:segments(12) ;	
+	-fx-border-style:segments(12.0) ;	
 }
 
 .settings-controller {	
@@ -35,4 +35,11 @@
     -fx-tick-label-fill: white;
     -fx-tick-label-font-weight: bold;
     -fx-tick-length: 7.0px;
+}
+
+.label{
+	
+	-fx-text-fill:black;
+	-fx-font-size:13.0;
+	-fx-font-weight:bold;
 }

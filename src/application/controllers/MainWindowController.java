@@ -1,5 +1,6 @@
 package application.controllers;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -107,19 +108,26 @@ public class MainWindowController {
 			}
 			
 			// Open ImageViewer
+			String local = getClass().getClassLoader().getResource("").getPath().replaceAll("%20", " ");
+			// starts with File.separator?
+			String path = ( local.startsWith(File.separator) || local.startsWith("/") )
+					? local.substring(File.separator.length(), local.length()) : local;
+			
 			imageViewerThread = new Thread(() -> {
-				Platform.runLater(Notifications.create().title("Processing").text("Opening XR3ImageViewer....")
-						.hideAfter(Duration.millis(1000))::show);
+				Platform.runLater(Notifications.create().title("Processing")
+						.text("Opening XR3ImageViewer....\n Current path is: " + path)
+						.hideAfter(Duration.millis(2000))::show);
 				
 				try {
 					
-					ProcessBuilder builder = new ProcessBuilder("java", "-jar", "XR3ImageViewer.jar");
+					ProcessBuilder builder = new ProcessBuilder("java", "-jar", path + "XR3ImageViewer.jar");
 					Process process = builder.start();
 					process.waitFor();
 					
 					if (process.exitValue() != 0)
-						Platform.runLater(Notifications.create().title("Error")
-								.text("Can't open XR3ImageViewer!\nBuilder Directory:" + builder.directory())
+						Platform.runLater(Notifications.create()
+								.title("Error").text("Can't open XR3ImageViewer!\nBuilder Directory:" + path
+										+ "\nTrying to start:" + path + "XR3ImageViewer.jar")
 								.hideAfter(Duration.millis(2000))::showError);
 					
 				} catch (IOException | InterruptedException ex) {
