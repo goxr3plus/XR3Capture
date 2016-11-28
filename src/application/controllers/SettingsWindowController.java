@@ -14,29 +14,37 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
- * @author GOXR3PLUS
+ * The Class SettingsWindowController.
  *
+ * @author GOXR3PLUS
  */
 public class SettingsWindowController extends Stage {
 	
+	/** The root. */
 	@FXML
-	private BorderPane		root;
+	private BorderPane root;
 	
+	/** The marrytts toggle. */
 	@FXML
-	private JFXToggleButton	marryttsToggle;
+	private JFXToggleButton marryttsToggle;
 	
+	/** The orientation. */
 	@FXML
-	private JFXToggleButton	orientation;
+	private JFXToggleButton orientation;
 	
+	/** The precision slider. */
 	@FXML
-	private JFXSlider		precisionSlider;
+	private JFXSlider precisionSlider;
 	
+	/** The main window controller. */
 	// --------------------
-	MainWindowController	mainWindowController;
-	CaptureWindowController	captureWindowController;
+	MainWindowController mainWindowController;
+	
+	/** The capture window controller. */
+	CaptureWindowController captureWindowController;
 	
 	/**
-	 * Will be called as soon as FXML file is loaded
+	 * Will be called as soon as FXML file is loaded.
 	 */
 	@FXML
 	public void initialize() {
@@ -60,21 +68,50 @@ public class SettingsWindowController extends Stage {
 	}
 	
 	/**
-	 * Add the needed references from the other controllers
-	 * 
-	 * @param mainWindowController
-	 * @param captureWindowController
-	 * 
+	 * Add the needed references from the other controllers.
+	 *
+	 * @param mainWindowController the main window controller
+	 * @param captureWindowController the capture window controller
 	 */
 	@SuppressWarnings("hiding")
 	public void addControllerReferences(MainWindowController mainWindowController ,
-			CaptureWindowController captureWindowController) {
+	        CaptureWindowController captureWindowController) {
 		
 		this.mainWindowController = mainWindowController;
 		this.captureWindowController = captureWindowController;
 	}
 	
+	/*-----------------------------------------------------------------------
+	 * 
+	 * -----------------------------------------------------------------------
+	 * 
+	 * 
+	 * 							     Getters
+	 * 
+	 * -----------------------------------------------------------------------
+	 * 
+	 * -----------------------------------------------------------------------
+	 */
+	
 	/**
+	 * Gets the precision slider.
+	 *
+	 * @return The precisionSlider
+	 */
+	public JFXSlider getPrecisionSlider() {
+		return precisionSlider;
+	}
+	
+	/**
+	 * @return the orientation
+	 */
+	public JFXToggleButton getOrientation() {
+		return orientation;
+	}
+	
+	/**
+	 * Gets the marry TTS toggle.
+	 *
 	 * @return The toggle which is for enabling/disabling text to speech
 	 *         recognition
 	 */
@@ -82,12 +119,37 @@ public class SettingsWindowController extends Stage {
 		return marryttsToggle;
 	}
 	
-	/**
-	 * @return The precisionSlider
+	/*-----------------------------------------------------------------------
 	 * 
+	 * -----------------------------------------------------------------------
+	 * 
+	 * 
+	 * 							     Setters
+	 * 
+	 * -----------------------------------------------------------------------
+	 * 
+	 * -----------------------------------------------------------------------
 	 */
-	public JFXSlider getPrecisionSlider() {
-		return precisionSlider;
+	
+	/**
+	 * @param precisionSlider the precisionSlider to set
+	 */
+	public void setPrecisionSlider(JFXSlider precisionSlider) {
+		this.precisionSlider = precisionSlider;
+	}
+	
+	/**
+	 * @param orientation the orientation to set
+	 */
+	public void setOrientation(JFXToggleButton orientation) {
+		this.orientation = orientation;
+	}
+	
+	/**
+	 * @param marryttsToggle the marryttsToggle to set
+	 */
+	public void setMarryttsToggle(JFXToggleButton marryttsToggle) {
+		this.marryttsToggle = marryttsToggle;
 	}
 	
 }

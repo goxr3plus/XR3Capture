@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package marytts;
 
 import java.io.File;
@@ -18,41 +21,56 @@ import application.Main;
 import marytts.util.data.audio.MonoAudioInputStream;
 import marytts.util.data.audio.StereoAudioInputStream;
 
+// TODO: Auto-generated Javadoc
 /**
  * A single Thread Audio Player
- * Once used it has to be reinitialized
- * 
- * @author GOXR3PLUS
+ * Once used it has to be reinitialized.
  *
+ * @author GOXR3PLUS
  */
 public class AudioPlayer extends Thread {
 	
+	/** The Constant MONO. */
 	public static final int		MONO			= 0;
+	
+	/** The Constant STEREO. */
 	public static final int		STEREO			= 3;
+	
+	/** The Constant LEFT_ONLY. */
 	public static final int		LEFT_ONLY		= 1;
+	
+	/** The Constant RIGHT_ONLY. */
 	public static final int		RIGHT_ONLY		= 2;
+	
+	/** The ais. */
 	private AudioInputStream	ais;
+	
+	/** The line listener. */
 	private LineListener		lineListener;
+	
+	/** The line. */
 	private SourceDataLine		line;
+	
+	/** The output mode. */
 	private int					outputMode;
 	
+	/** The status. */
 	private Status				status			= Status.WAITING;
+	
+	/** The exit requested. */
 	private boolean				exitRequested	= false;
 	
 	/**
-	 * The status of the player
-	 * 
-	 * @author GOXR3PLUS
+	 * The status of the player.
 	 *
+	 * @author GOXR3PLUS
 	 */
 	public enum Status {
-		/**
-		 * 
-		 */
+		
+		/** The waiting. */
 		WAITING,
-		/**
-		* 
-		*/
+		
+		/** The playing. */
 		PLAYING;
 	}
 	
@@ -65,26 +83,32 @@ public class AudioPlayer extends Thread {
 	}
 	
 	/**
-	 * @param audioFile
-	 * @throws IOException
-	 * @throws UnsupportedAudioFileException
+	 * Instantiates a new audio player.
+	 *
+	 * @param audioFile the audio file
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws UnsupportedAudioFileException the unsupported audio file exception
 	 */
 	public AudioPlayer(File audioFile) throws IOException, UnsupportedAudioFileException {
 		this.ais = AudioSystem.getAudioInputStream(audioFile);
 	}
 	
 	/**
-	 * @param ais
+	 * Instantiates a new audio player.
+	 *
+	 * @param ais the ais
 	 */
 	public AudioPlayer(AudioInputStream ais) {
 		this.ais = ais;
 	}
 	
 	/**
-	 * @param audioFile
-	 * @param lineListener
-	 * @throws IOException
-	 * @throws UnsupportedAudioFileException
+	 * Instantiates a new audio player.
+	 *
+	 * @param audioFile the audio file
+	 * @param lineListener the line listener
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws UnsupportedAudioFileException the unsupported audio file exception
 	 */
 	public AudioPlayer(File audioFile, LineListener lineListener) throws IOException, UnsupportedAudioFileException {
 		this.ais = AudioSystem.getAudioInputStream(audioFile);
@@ -92,8 +116,10 @@ public class AudioPlayer extends Thread {
 	}
 	
 	/**
-	 * @param ais
-	 * @param lineListener
+	 * Instantiates a new audio player.
+	 *
+	 * @param ais the ais
+	 * @param lineListener the line listener
 	 */
 	public AudioPlayer(AudioInputStream ais, LineListener lineListener) {
 		this.ais = ais;
@@ -101,11 +127,13 @@ public class AudioPlayer extends Thread {
 	}
 	
 	/**
-	 * @param audioFile
-	 * @param line
-	 * @param lineListener
-	 * @throws IOException
-	 * @throws UnsupportedAudioFileException
+	 * Instantiates a new audio player.
+	 *
+	 * @param audioFile the audio file
+	 * @param line the line
+	 * @param lineListener the line listener
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws UnsupportedAudioFileException the unsupported audio file exception
 	 */
 	public AudioPlayer(File audioFile, SourceDataLine line, LineListener lineListener)
 			throws IOException, UnsupportedAudioFileException {
@@ -115,9 +143,11 @@ public class AudioPlayer extends Thread {
 	}
 	
 	/**
-	 * @param ais
-	 * @param line
-	 * @param lineListener
+	 * Instantiates a new audio player.
+	 *
+	 * @param ais the ais
+	 * @param line the line
+	 * @param lineListener the line listener
 	 */
 	public AudioPlayer(AudioInputStream ais, SourceDataLine line, LineListener lineListener) {
 		this.ais = ais;
@@ -126,23 +156,18 @@ public class AudioPlayer extends Thread {
 	}
 	
 	/**
-	 * 
-	 * @param audioFile
-	 *        audiofile
-	 * @param line
-	 *        line
-	 * @param lineListener
-	 *        lineListener
-	 * @param outputMode
-	 *        if MONO, force output to be mono; if STEREO, force output to be
+	 * Instantiates a new audio player.
+	 *
+	 * @param audioFile        audiofile
+	 * @param line        line
+	 * @param lineListener        lineListener
+	 * @param outputMode        if MONO, force output to be mono; if STEREO, force output to be
 	 *        STEREO; if LEFT_ONLY, play a mono signal over
 	 *        the left channel of a stereo output, or mute the right channel of
 	 *        a stereo signal; if RIGHT_ONLY, do the same
 	 *        with the right output channel.
-	 * @throws IOException
-	 *         IOException
-	 * @throws UnsupportedAudioFileException
-	 *         UnsupportedAudioFileException
+	 * @throws IOException         IOException
+	 * @throws UnsupportedAudioFileException         UnsupportedAudioFileException
 	 */
 	public AudioPlayer(File audioFile, SourceDataLine line, LineListener lineListener, int outputMode)
 			throws IOException, UnsupportedAudioFileException {
@@ -153,15 +178,12 @@ public class AudioPlayer extends Thread {
 	}
 	
 	/**
-	 * 
-	 * @param ais
-	 *        ais
-	 * @param line
-	 *        line
-	 * @param lineListener
-	 *        lineListener
-	 * @param outputMode
-	 *        if MONO, force output to be mono; if STEREO, force output to be
+	 * Instantiates a new audio player.
+	 *
+	 * @param ais        ais
+	 * @param line        line
+	 * @param lineListener        lineListener
+	 * @param outputMode        if MONO, force output to be mono; if STEREO, force output to be
 	 *        STEREO; if LEFT_ONLY, play a mono signal over
 	 *        the left channel of a stereo output, or mute the right channel of
 	 *        a stereo signal; if RIGHT_ONLY, do the same
@@ -175,7 +197,9 @@ public class AudioPlayer extends Thread {
 	}
 	
 	/**
-	 * @param audio
+	 * Sets the audio.
+	 *
+	 * @param audio the new audio
 	 */
 	public void setAudio(AudioInputStream audio) {
 		if (status == Status.PLAYING) {
@@ -185,7 +209,7 @@ public class AudioPlayer extends Thread {
 	}
 	
 	/**
-	 * Cancel the AudioPlayer which will cause the Thread to exit
+	 * Cancel the AudioPlayer which will cause the Thread to exit.
 	 */
 	public void cancel() {
 		if (line != null) {
@@ -195,6 +219,8 @@ public class AudioPlayer extends Thread {
 	}
 	
 	/**
+	 * Gets the line.
+	 *
 	 * @return The SourceDataLine
 	 */
 	public SourceDataLine getLine() {
@@ -204,8 +230,8 @@ public class AudioPlayer extends Thread {
 	/**
 	 * Sets Gain value. Line should be opened before calling this method. Linear
 	 * scale 0.0 <--> 1.0 Threshold Coef. : 1/2 to avoid saturation.
-	 * 
-	 * @param fGain
+	 *
+	 * @param fGain the new gain
 	 */
 	public void setGain(double fGain) {
 		
@@ -220,6 +246,9 @@ public class AudioPlayer extends Thread {
 		System.out.println( ( (FloatControl) line.getControl(FloatControl.Type.MASTER_GAIN) ).getValue());
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Thread#run()
+	 */
 	@Override
 	public void run() {
 		

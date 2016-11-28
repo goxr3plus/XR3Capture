@@ -15,18 +15,25 @@ import marytts.exceptions.MaryConfigurationException;
 import marytts.exceptions.SynthesisException;
 import marytts.modules.synthesis.Voice;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author GOXR3PLUS
+ * The Class TextToSpeech.
  *
+ * @author GOXR3PLUS
  */
 public class TextToSpeech {
 	
+	/** The tts. */
 	private AudioPlayer		tts;
+	
+	/** The marytts. */
 	private MaryInterface	marytts;
+	
+	/** The numbers map. */
 	Map<Integer,String>		numbersMap	= new HashMap<>();
 	
 	/**
-	 * Constructor
+	 * Constructor.
 	 */
 	public TextToSpeech() {
 		try {
@@ -52,25 +59,25 @@ public class TextToSpeech {
 	}
 	
 	/**
-	 * Change the default voice of the MaryTTS
-	 * 
-	 * @param voice
+	 * Change the default voice of the MaryTTS.
+	 *
+	 * @param voice the new voice
 	 */
 	public void setVoice(String voice) {
 		marytts.setVoice(voice);
 	}
 	
 	/**
-	 * Transform number to speech
-	 * 
-	 * @param number
+	 * Transform number to speech.
+	 *
+	 * @param number the number
 	 */
 	public void speak(int number) {
 		speak(numbersMap.get(number));
 	}
 	
 	/**
-	 * Stop the MaryTTS from Speaking
+	 * Stop the MaryTTS from Speaking.
 	 */
 	public void stopSpeaking() {
 		// Stop the previous player
@@ -79,9 +86,9 @@ public class TextToSpeech {
 	}
 	
 	/**
-	 * Transform text to speech
-	 * 
-	 * @param text
+	 * Transform text to speech.
+	 *
+	 * @param text the text
 	 */
 	public void speak(String text) {
 		

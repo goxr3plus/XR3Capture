@@ -10,18 +10,19 @@ import javax.imageio.ImageIO;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
+// TODO: Auto-generated Javadoc
 /**
- * A special implementation of FileChooser
- * 
- * @author GOXR3PLUS
+ * A special implementation of FileChooser.
  *
+ * @author GOXR3PLUS
  */
 public class SFileChooser {
 	
+	/** The file chooser. */
 	private FileChooser fileChooser = new FileChooser();
 	
 	/**
-	 * 
+	 * Instantiates a new s file chooser.
 	 */
 	public SFileChooser() {
 		fileChooser.setTitle("Save Image");
@@ -52,6 +53,8 @@ public class SFileChooser {
 	}
 	
 	/**
+	 * Gets the.
+	 *
 	 * @return the FileChooser
 	 */
 	public FileChooser get() {

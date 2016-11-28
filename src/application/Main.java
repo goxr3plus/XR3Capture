@@ -1,5 +1,11 @@
+/*
+ * 
+ */
 package application;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.concurrent.CountDownLatch;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -7,6 +13,7 @@ import java.util.logging.Logger;
 import application.controllers.CaptureWindowController;
 import application.controllers.MainWindowController;
 import application.controllers.SettingsWindowController;
+import database.DataBase;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -20,51 +27,49 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import marytts.TextToSpeech;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author GOXR3PLUS
+ * The Class Main.
  *
+ * @author GOXR3PLUS
  */
 public class Main extends Application {
 	
-	Thread							daemon;
+	/** The daemon. */
+	Thread daemon;
+	
+	/** The stage. */
+	public static Stage stage;
+	
+	/** The main window controller. */
+	public MainWindowController mainWindowController;
+	
+	/** The Capture Window of the application. */
+	public CaptureWindowController captureWindowController;
+	
+	/** The settings window controller. */
+	public SettingsWindowController settingsWindowController;
+	
+	/** Test to Speech using MaryTTS Libraries. */
+	public static TextToSpeech textToSpeech = new TextToSpeech();
 	
 	/**
-	 * 
-	 */
-	public static Stage				stage;
-	/**
-	 * 
-	 */
-	public MainWindowController		mainWindowController;
-	/**
-	 * The Capture Window of the application
-	 */
-	public CaptureWindowController	captureWindowController;
-	/**
-	 * 
-	 */
-	public SettingsWindowController	settingsWindowController;
-	
-	/**
-	 * Test to Speech using MaryTTS Libraries
-	 */
-	public static TextToSpeech		textToSpeech	= new TextToSpeech();
-	
-	/**
-	 * Main method
-	 * 
-	 * @param args
+	 * Main method.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		launch(args);
 	}
 	
+	/* (non-Javadoc)
+	 * @see javafx.application.Application#start(javafx.stage.Stage) */
 	@Override
 	public void start(Stage primary) throws Exception {
 		
 		// stage
 		stage = primary;
-		stage.setTitle("XR3Capture V.7");
+		stage.setTitle("XR3Capture Version 9");
 		stage.getIcons().add(new Image(getClass().getResourceAsStream("/image/icon.png")));
 		stage.initStyle(StageStyle.TRANSPARENT);
 		stage.setAlwaysOnTop(true);
@@ -89,6 +94,9 @@ public class Main extends Application {
 		captureWindowController.addControllerReferences(mainWindowController, settingsWindowController);
 		settingsWindowController.addControllerReferences(mainWindowController, captureWindowController);
 		
+		// Load the dataBase
+		DataBase.loadDataBaseSettings(settingsWindowController);
+		
 		// Finally
 		stage.setScene(new Scene(loader1.getRoot(), Color.TRANSPARENT));
 		stage.show();
@@ -101,7 +109,7 @@ public class Main extends Application {
 	
 	/**
 	 * This method is starting a Thread which is running all the time and is
-	 * fixing the position of the application on the screen
+	 * fixing the position of the application on the screen.
 	 */
 	private void startPositionFixThread() {
 		
