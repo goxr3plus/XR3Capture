@@ -1,7 +1,7 @@
    
 <XR3Capture (The smart way of capturing your computer screen!)>
 
-    Copyright © <2016>
+    Copyright © <2016-2337>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -29,4 +29,4 @@
 
 END OF TERMS AND CONDITIONS
 
- Copyright © <2016>  (www.goxr3plus.co.nf) . All rights reserved.
+ Copyright © <2016-2337>  (www.goxr3plus.co.nf) . All rights reserved.

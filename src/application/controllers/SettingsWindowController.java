@@ -47,7 +47,7 @@ public class SettingsWindowController extends Stage {
 	 * Will be called as soon as FXML file is loaded.
 	 */
 	@FXML
-	public void initialize() {
+	private void initialize() {
 		
 		setTitle("Settings");
 		getIcons().add(new Image(getClass().getResourceAsStream("/image/icon.png")));

@@ -43,3 +43,7 @@
 	-fx-font-size:13.0;
 	-fx-font-weight:bold;
 }
+
+.text-area {
+	-fx-font-weight:bold;
+}
