@@ -1,7 +1,7 @@
 /**
  * 
  */
-package application;
+package main.java.com.goxr3plus.xr3capture.tools;
 
 import java.util.Arrays;
 

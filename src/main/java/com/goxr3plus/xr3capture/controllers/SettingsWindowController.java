@@ -1,7 +1,7 @@
 /**
  * 
  */
-package application.controllers;
+package main.java.com.goxr3plus.xr3capture.controllers;
 
 import com.jfoenix.controls.JFXSlider;
 import com.jfoenix.controls.JFXToggleButton;

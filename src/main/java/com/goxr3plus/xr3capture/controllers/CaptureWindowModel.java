@@ -1,7 +1,7 @@
 /**
  * 
  */
-package application.controllers;
+package main.java.com.goxr3plus.xr3capture.controllers;
 
 import java.util.Random;
 
