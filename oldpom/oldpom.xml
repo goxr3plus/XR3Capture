@@ -5,7 +5,7 @@
 
 	<groupId>com.github.goxr3plus</groupId>
 	<artifactId>XR3Capture</artifactId>
-	<version>3.1.1</version>
+	<version>3.1.0</version>
 	<name>XR3Player</name>
 	<description>JavaFX Computer Screen Capture</description>
 	<url>https://github.com/goxr3plus/XR3Capture</url>
@@ -20,7 +20,7 @@
 	</properties>
 
 	<build>
-		<finalName>XR3Capture-${project.version}</finalName>
+		<finalName>XR3Capture</finalName>
 		<sourceDirectory>src</sourceDirectory>
 		<resources>
 			<resource>
@@ -29,8 +29,6 @@
 		</resources>
 		<!-- <testSourceDirectory>testing</testSourceDirectory> -->
 		<plugins>
-
-			<!-- Maven Source Plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
@@ -44,13 +42,9 @@
 					</execution>
 				</executions>
 			</plugin>
-
-			<!-- Maven Javadoc Plugin -->
 			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-javadoc-plugin</artifactId> 
 				<version>3.0.0-M1</version> <executions> <execution> <id>attach-javadocs</id> 
 				<goals> <goal>jar</goal> </goals> </execution> </executions> </plugin> -->
-
-			<!-- Maven Compiler Plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -62,42 +56,50 @@
 				</configuration>
 			</plugin>
 
-			<!-- Make this jar executable -->
+			<!-- Maven Assembly Plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.0.2</version>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>3.1.0</version>
 				<configuration>
+					<!-- get all project dependencies -->
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<!-- Jar Final Name -->
+					<finalName>XR3Capture</finalName>
+					<!-- MainClass in mainfest make a executable jar -->
 					<archive>
 						<manifest>
-							<addClasspath>true</addClasspath>
 							<mainClass>main.java.com.goxr3plus.xr3capture.application.Main</mainClass>
-							<classpathPrefix>XR3Capture_lib/</classpathPrefix>
 						</manifest>
 					</archive>
+					<appendAssemblyId>false</appendAssemblyId>
 				</configuration>
-			</plugin>
-
-			<!-- Copy project dependency -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>3.0.2</version>
 				<executions>
 					<execution>
-						<id>copy-dependencies</id>
+						<id>make-assembly</id>
+						<!-- bind to the packaging phase -->
 						<phase>package</phase>
 						<goals>
-							<goal>copy-dependencies</goal>
+							<goal>single</goal>
 						</goals>
-						<configuration>
-							<!-- exclude junit, we need runtime dependency only -->
-							<excludeArtifactIds> junit </excludeArtifactIds>
-							<outputDirectory>${project.build.directory}/XR3Capture_lib/</outputDirectory>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
+
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.0.2</version>
+				<executions>
+					<execution>
+						<id>default-jar</id>
+						<!-- put the default-jar in the none phase to skip it from being created -->
+						<phase>none</phase>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
 
