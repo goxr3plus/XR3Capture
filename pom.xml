@@ -5,7 +5,7 @@
 
 	<groupId>com.github.goxr3plus</groupId>
 	<artifactId>XR3Capture</artifactId>
-	<version>3.1.1</version>
+	<version>3.12</version>
 	<name>XR3Player</name>
 	<description>JavaFX Computer Screen Capture</description>
 	<url>https://github.com/goxr3plus/XR3Capture</url>
@@ -124,7 +124,7 @@
 		<dependency>
 			<groupId>com.jfoenix</groupId>
 			<artifactId>jfoenix</artifactId>
-			<version>1.11.1</version>
+			<version>1.10.0</version>
 		</dependency>
 
 	</dependencies>
