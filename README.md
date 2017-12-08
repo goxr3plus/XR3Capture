@@ -37,7 +37,7 @@ https://jitpack.io/#goxr3plus/XR3Capture
 dependency>
 	  <groupId>com.github.goxr3plus</groupId>
 	  <artifactId>xr3capture</artifactId>
-	  <version>V3.11</version>
+	  <version>V3.12</version>
 </dependency>
 ```
 
