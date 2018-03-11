@@ -10,13 +10,52 @@ Is a JavaFX application which allows you to take screen shots of your computer a
 [contributors-url]: https://github.com/goxr3plus/XR3Capture/graphs/contributors
 [contributors-image]: https://img.shields.io/github/contributors/goxr3plus/XR3Capture.svg
 
+[jitpack-url]: https://jitpack.io/#goxr3plus/XR3Capture
+
+### Add it to your project using JitPack :
+
+[Link][jitpack-url]
+
+### Step 1. Add the JitPack repository to your build file
+``` XML
+<repositories>
+	<repository>
+	   <id>jitpack.io</id>
+	   <url>https://jitpack.io</url>
+        </repository>
+</repositories>
+```
+
+### Step 1. Add it as a dependency
+
+* JavaFX-Web-Browser for Java 9 - (9.x)
+
+``` XML
+<dependency>
+	 <groupId>com.github.goxr3plus</groupId>
+	 <artifactId>JavaFX-Web-Browser</artifactId>
+	 <version>V9.12</version>
+</dependency>
+```
+
+* JavaFX-Web-Browser for Java 8 - (3.x)
+
+``` XML
+<dependency>
+	 <groupId>com.github.goxr3plus</groupId>
+	 <artifactId>JavaFX-Web-Browser</artifactId>
+	 <version>V3.12</version>
+</dependency>
+```
+
+
 # From version V3.11 it is completely embeddable!!!
 
 What that means ? Well you can download the jar file with Maven , Gradle etc ( the depencities will come along ) and use it inside your application . 
 
 --> You don't believe me ?? ( I am already doing this with [XR3Player](https://github.com/goxr3plus/XR3Player) ) 
 
---> How you can embed it inside your application ? ( Use [JitPack.io](https://jitpack.io/#goxr3plus/XR3Capture/V3.11) )
+--> How you can embed it inside your application ? ( Use [JitPack.io](https://jitpack.io/#goxr3plus/XR3Capture/V3.12) )
 
 ### Add it to your project using JitPack :
 
