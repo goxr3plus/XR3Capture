@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.github.goxr3plus</groupId>
 	<artifactId>XR3Capture</artifactId>
-	<version>9.12</version>
+	<version>9.13.0</version>
 	<name>XR3Player</name>
 	<description>JavaFX Computer Screen Capture</description>
 	<url>https://github.com/goxr3plus/XR3Capture</url>
@@ -56,8 +57,10 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.7.0</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>1.9</source>
+					<target>1.9</target>
+					<release>9</release>
+					<executable>javac9</executable>
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
@@ -145,7 +148,7 @@
 		<dependency>
 			<groupId>com.jfoenix</groupId>
 			<artifactId>jfoenix</artifactId>
-			<version>9.0.2</version>
+			<version>9.0.4</version>
 		</dependency>
 
 	</dependencies>

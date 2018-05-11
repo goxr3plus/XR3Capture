@@ -9,6 +9,54 @@
 
 /*******************************************************************************
 
+*                           bread-crumb-bar                                        *
+
+******************************************************************************/
+
+
+.bread-crumb-bar {
+     -fx-background-color: #101010;
+}
+
+ .bread-crumb-bar .button {
+    /*-fx-padding: 8.0 12.0 8.0 20.0;
+    -fx-border-color: null;
+    -fx-border-insets: 0.0;
+    -fx-content-display: left;
+    -fx-background-position: left center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-shape: null;
+    */
+    -fx-cursor:hand;
+}
+
+/*.bread-crumb-bar .first {
+    -fx-background-color: transparent ;
+    -fx-border-color: transparent;
+    -fx-font-size: 1.11em;
+    -fx-text-fill: #000;
+    -fx-background-image: null;
+    -fx-shape: null;
+    -fx-padding: 8.0 12.0 8.0 0.0;
+}
+.crumb {
+    -fx-text-fill: white;
+    
+}
+.crumb:hover, .crumb:selected,  .crumb:focused {
+    -fx-background-color: rgba(0.0,0.0,0.0,0.1);
+    -fx-border-color: null;
+  -fx-font-weight:bold;
+    -fx-text-fill: white;
+    
+}
+
+*/
+
+/*******************************************************************************
+
 *                           SplitPane                                        *
 
 ******************************************************************************/
@@ -31,7 +79,7 @@
 
 /*******************************************************************************
 
-*                           Chart                                        *
+*                           PieChart                                        *
 
 ******************************************************************************/
 
@@ -54,6 +102,45 @@
 .chart .chart-content .chart-pie-label-line {
 	-fx-stroke: #8b4513;
     -fx-fill: #8b4513;
+}
+
+/*******************************************************************************
+
+*                           XYChart                                        *
+
+******************************************************************************/
+
+.bar-chart:vertical{
+	-fx-background-color:#202020;
+}
+
+
+.axis:left{
+	
+	-fx-tick-label-fill: white;
+	-fx-minor-tick-visible:false;
+}
+
+.bar-chart:vertical .chart-content .chart-plot-background{
+	-fx-background-color:#202020;
+}
+
+.bar-chart:vertical .chart-title{
+	-fx-background-color:#202020;
+	-fx-font-weight:bold;
+	-fx-font-size:15.0px;
+}
+
+.axis:bottom{
+	-fx-background-color:#252525;
+}
+
+.axis:bottom .axis-tick-mark{
+	-fx-fill:red;
+}
+
+.axis:bottom .axis-label .text{
+	-fx-fill:white;
 }
 
 
@@ -151,38 +238,44 @@
 
 
 
-.table-view{
+.media-table-view{
    -fx-background-color: #202020;
    -fx-table-cell-border-color: transparent;
 }
 
-.table-view:focused{
+
+.media-table-view:row-selection:constrained-resize .placeholder .label .text{
+	-fx-fill:white;
+	-fx-font-weight:bold;
+}
+
+.media-table-view:focused{
     /*-fx-background-color: transparent;*/
 }
 
 
-.table-view .column-header {
+.media-table-view .column-header {
      -fx-background-color: transparent;
      -fx-border-color:transparent white transparent transparent;
      -fx-border-width:0.1;
 } 
 
-.table-view .column-header-background{
+.media-table-view .column-header-background{
     -fx-background-color: linear-gradient(#131313 0.0%, #424141 100.0%);
 }
 
-.table-view .column-header-background .label{
+.media-table-view .column-header-background .label{
     -fx-background-color: transparent; 
     -fx-font-weight:bold;
     -fx-text-fill: white;
 }
 
-.table-view .table-column{
+.media-table-view .table-column{
 	-fx-alignment:center;
 }
 
  
-/* .table-row-cell */
+/* ------------- .table-row-cell ------------- */
 
 .table-row-cell{
 	-fx-table-cell-border-color: transparent;
@@ -210,13 +303,6 @@
 }
 
 
-
-
-
-/*.table-row-cell:focused .text {
-     -fx-fill: white ;
-} */
-
 .table-row-cell:hover{
 	-fx-table-cell-border-color: transparent;
 	/*-fx-table-cell-border-width: 2.0;*/
@@ -226,14 +312,10 @@
      -fx-fill: black ;    
 }
 
-.table-row-cell:hover:selected .text,.table-row-cell:focused:selected .text{
+.table-row-cell:hover:selected .text, .table-row-cell:focused:selected .text{
 	-fx-fill:white;
 }
 
-
-/*.table-row-cell:focused{
-	-fx-background-color:firebrick;
-}*/
 
 .table-row-cell:focused:disabled{ 
 	-fx-background-color:darkgray;
@@ -242,32 +324,41 @@
 .table-row-cell:hover , .table-row-cell:selected{
 	/*-fx-background-color:rgb(0.0,191.0,255.0);*/
 	/*-fx-background-color: linear-gradient(#328BDB 0.0%, #207BCF 25.0%, #1973C9 75.0%, #0A65BF 100.0%);*/
-	-fx-background-color: linear-gradient(#FF9400 0.0%, #FF7F00 25.0%, #FF5D00 75.0%, #FF4300 100.0%);
+	-fx-background-color:rgb(255.0,106.0,0.0,0.85);
+	/*-fx-background-color: linear-gradient(#FF9400 0.0%, #FF7F00 25.0%, #FF5D00 75.0%, #FF4300 100.0%);*/
 }
 
 
-.table-view .filler {
-  
-}
+/* ------------- row-selection -------------------*/
 
-.table-view:row-selection:constrained-resize .column-header-background .show-hide-columns-button{
+.media-table-view:row-selection:constrained-resize .column-header-background .show-hide-columns-button{
 	-fx-background-color:black;	
 	-fx-cursor:hand;
+	-fx-padding:50.0px;
 }
 
-.table-view:row-selection:constrained-resize .column-header-background .show-hide-columns-button:hover{
+.media-table-view:row-selection:constrained-resize .column-header-background .show-hide-columns-button:hover{
 	-fx-background-color:orange;
 }
 
-.table-view:row-selection:constrained-resize .column-header-background .show-hide-columns-button .show-hide-column-image{
+.media-table-view:row-selection:constrained-resize .column-header-background .show-hide-columns-button .show-hide-column-image{
 	-fx-background-color:firebrick;
+	-fx-padding:5.0px;
 }
 
-.table-view:row-selection:constrained-resize .column-header-background .show-hide-columns-button .show-hide-column-image:hover{
+.media-table-view:row-selection:constrained-resize .column-header-background .show-hide-columns-button .show-hide-column-image:hover{
 	-fx-background-color:black;
 }
 
 
+
+/*.table-row-cell:focused{
+	-fx-background-color:firebrick;
+}*/
+
+/*.table-row-cell:focused .text {
+     -fx-fill: white ;
+} */
 
 
 /*------------------------------*
@@ -397,9 +488,20 @@
   -fx-border-color:white transparent transparent transparent;
 }
 
- .dialog-pane .button{
-   -fx-cursor:hand;
- }
+ 
+ .dialog-pane .button:armed,
+.dialog-pane .button:hover,
+.dialog-pane .button:focused{
+    -fx-background-color:rgb(255.0,255.0,255.0,0.9);
+    -fx-text-fill:black;
+}
+
+.dialog-pane .button {
+    -fx-background-color:rgb(255.0,255.0,255.0,0.4);
+    -fx-background-radius: 0.0px;
+    -fx-background-insets: 0.0px;
+    -fx-cursor:hand;
+}
 
 /* .dialog-pane .button:hover{   
 	-fx-background-color:rgb(255.0,119.0,0.0,0.7);
@@ -475,7 +577,7 @@
 .specialJFXTabPane .tab .tab-label { 
     -fx-alignment: CENTER;
     -fx-text-fill: white;
-    -fx-font-size: 12.0px; /* before it was 12px */
+    -fx-font-size: 13.5px; /* before it was 12px */
     -fx-font-weight: bold;
     -fx-wrap-text: true;
     -fx-cursor:hand;
@@ -693,10 +795,7 @@
  .button , .menu-button , .segmented-button-bar .toggle-button {	
  	 /*-fx-effect: dropshadow( three-pass-box , rgba(0.0,0.0,0.0,0.6) , 5.0, 0.0 , 0.0 , 1.0 );*/
     /* -fx-background-color:  linear-gradient(#38424b 0.0%, #1f2429 20.0%, #191d22 100.0%);   */
- 	 -fx-background-color:
-        -darkest-black,
-        -dark-highlight,
-        linear-gradient(to bottom, -light-black 2.0%, -dark-black 98.0%);
+ 	-fx-background-color: -darkest-black, -dark-highlight, linear-gradient(to bottom, -light-black 2.0%, -dark-black 98.0%);
     -fx-background-insets: 0.0, 1.0 1.0 1.0 0.0, 2.0 1.0 1.0 1.0;
     -fx-text-fill: white;    
     -fx-font-size: 13.0px;    
@@ -727,6 +826,51 @@
 .segmented-button-bar .toggle-button:selected{
 	-fx-background-color:#E47434;
 	-fx-text-fill:#202020;
+}
+
+
+.jfx-button:armed,
+.jfx-button:hover,
+.jfx-button:focused{
+    -fx-background-color:rgb(255.0,255.0,255.0,0.9);
+    -fx-text-fill:black;
+}
+
+.jfx-button {
+    -fx-background-color:rgb(255.0,255.0,255.0,0.4);
+    -fx-background-radius: 0.0px;
+    -fx-background-insets: 0.0px;
+    -fx-cursor:hand;
+}
+
+.jfx-button2:armed,
+.jfx-button2:hover,
+.jfx-button2:focused{
+    -fx-background-color:rgb(0.0,0.0,0.0,0.8);
+    -fx-text-fill:white;
+}
+
+.jfx-button2 {
+    -fx-background-color:rgb(0.0,0.0,0.0,0.4);
+    -fx-background-radius: 0.0px;
+    -fx-background-insets: 0.0px;
+    -fx-cursor:hand;
+}
+
+
+.jfx-button3:armed,
+.jfx-button3:hover,
+.jfx-button3:focused{
+    -fx-background-color:rgb(255.0,106.0,0.0);
+    -fx-text-fill:black;
+}
+
+
+.jfx-button3 {
+    -fx-background-color:-darkest-black, -dark-highlight, linear-gradient(to bottom, -light-black 2.0%, -dark-black 98.0%);
+    -fx-background-radius: 0.0px;
+    -fx-background-insets: 0.0px;
+    -fx-cursor:hand;
 }
  
  
@@ -795,6 +939,7 @@
   .windowButton{
   	-fx-font-size:9.0;	
   	-fx-font-weight:bold;
+  	-fx-background-radius:0.0;
   }
   
   
@@ -823,20 +968,20 @@
  .menu-item .label{
  	-fx-text-fill:white;
  	-fx-font-weight:bold;
- 	-fx-font-size:12.0;
+ 	-fx-font-size:15.5;
  }
  
  .menu-item:focused {
  	-color: rgb(255.0,95.0,0.0);
-	-fx-background-color:linear-gradient(
+	/*-fx-background-color:linear-gradient(
         from 0.0px 0.75em to 0.75em 0.0px,
         repeat,
         -color 0.0%,
        -color 49.0%,
         derive(-color, 30.0%) 50.0%,
         derive(-color, 30.0%) 99.0%
-    );
- 	-fx-background-radius:10.0;
+    );*/
+    -fx-background-color:rgb(255.0,106.0,0.0,0.85);
  }
  
  .menu-item:focused .label{
@@ -1066,6 +1211,7 @@
 .tree-cell:selected {
     -fx-font-weight: bold ;
     -fx-text-fill:white; 
+    -fx-underline: true;
 }
 .tree-cell {
     -fx-padding: 0.75em 0.0em 0.75em 0.0em ;
@@ -1083,12 +1229,12 @@
 
 .tree-cell-2 {
     -fx-text-fill: firebrick ;
-    -fx-font-weight:bold;
 }
 
 .tree-cell-2:selected {
     -fx-font-weight: bold ;
     -fx-text-fill:firebrick; 
+    -fx-underline: true;
 }
 
 
@@ -1113,6 +1259,18 @@
 
 .progress-indicator:determinate .determinate-indicator .percentage{
 	-fx-fill:white;
+}
+
+.dropbox-progress-indicator{
+	-color:  #007EE5;
+	-fx-accent:linear-gradient(
+        from 0.0px 0.75em to 0.75em 0.0px,
+        repeat,
+        -color 0.0%,
+       -color 49.0%,
+        derive(-color, 30.0%) 50.0%,
+        derive(-color, 30.0%) 99.0%
+    );
 }
 
 /* .progress-bar{
@@ -1286,33 +1444,34 @@
 }*/
 
 
-.search-box .text-field, .libraries-search-box .text-field {
+/* .search-box .text-field, .libraries-search-box .text-field {*/
 	/*-fx-effect: dropshadow( three-pass-box, red , 10.0, 0.0,0.0,0.0);*/
     /*-fx-background-insets:3.0;*/
-    -fx-background-insets: -0.1, 2.0;
-    /*-fx-background-radius: 5.0;
+     /*-fx-background-radius: 5.0;
     -fx-border-radius:5.0;*/
+    /*-fx-background-insets: -0.1, 2.0;
     -fx-border-width:1.0;
     -fx-prompt-text-fill:black;
     -fx-text-fill:black;
     -fx-font-size:13.0;
     -fx-font-weight:bold;       
-}
+}*/
 
 
-.search-box .text-field:focused, .libraries-search-box .text-field:focused,.search-box .text-field:hover, .libraries-search-box .text-field:hover{
+/* .search-box .text-field:focused, .libraries-search-box .text-field:focused,.search-box .text-field:hover, .libraries-search-box .text-field:hover{ */
 	/*-fx-effect: null;*/
-	-fx-background-color: firebrick;
+	 /*-fx-background-insets: -0.1, 2.0;*/
+	/*-fx-background-color: firebrick;
 	-fx-border-color:white;
 	-fx-text-fill:white;
 	-fx-prompt-text-fill:white;
-    /*-fx-background-insets: -0.1, 2.0;*/
-}
+   
+}*/
 
 .search-box-window-item{
-	-fx-background-color:rgb(0.0,0.0,0.0,0.9);
+	-fx-background-color:white;
 	/*-fx-background-radius:5.0;*/
-	-fx-text-fill:white;
+	-fx-text-fill:black;
 	-fx-font-size:15.0;	
 	-fx-font-weight:bold;
 	-fx-cursor:hand;
@@ -1320,14 +1479,30 @@
 }
 
 .search-box-window-item:hover{
-	-fx-background-color:black;	
-	-fx-text-fill:firebrick;
+	-fx-background-color:#353535;	
+	-fx-text-fill:white;
 }
 
 .search-box-window-label{
 	-fx-text-fill:white; 
 	-fx-font-weight:bold;
 	-fx-font-size:15.0;
+}
+
+
+.tree-view-search-box {
+    -fx-background-radius: 45.0;
+    -fx-border-radius:45.0; 
+    -fx-border-width:1.0;
+    
+    -fx-background-color:white;
+    -fx-text-fill:black;
+    -fx-prompt-text-fill:#808080;
+    -fx-font-weight:bold;    
+}
+
+.tree-view-search-box:hover{
+   -fx-border-width:2.0;
 }
 
  /*******************************************************************************
@@ -1511,6 +1686,10 @@
 	-fx-text-fill:white;
 }
 
+.menu-button .arrow-button .arrow{
+	-fx-background-color:white;
+}
+
 .visWindowMenuButton .label{	
 	-fx-text-fill:white;
 }
@@ -1520,6 +1699,24 @@
 	-fx-background-radius:45.0;
 	-fx-text-fill:white;
 }
+
+
+
+
+
+.menu-button{
+	-fx-background-radius:0.0;
+}
+
+.menu-button2 .label{
+	-fx-text-fill:white;
+}
+
+.menu-button2 .label:hover{
+	-fx-background-color:transparent;
+	-fx-text-fill:white;
+}
+
 
 
 /*******************************************************************************
@@ -1554,7 +1751,7 @@
 }
 
 .transparency-slider .thumb:hover{	
-	-fx-border-width:5.0;
+	/* -fx-border-width:5.0; */
 }
 
 .transparency-slider .track{
@@ -1612,5 +1809,159 @@
 	-fx-border-color:transparent transparent white transparent;
 	-fx-border-width:2.0;
 }
+
+/*******************************************************************************
+
+*                           Online Music                            *
+
+******************************************************************************/
+
+.online-music-root{
+	-fx-background-color:#101010;
+}
+
+.online-music-root-vbox{
+	 -fx-padding:0.0 10.0 0.0 0.0;
+}
+
+.online-music-title-label{
+	-fx-font-size:17.0;
+	-fx-background-color:#202020;
+	-fx-text-fill:white;
+	-fx-font-weight:bold;
+	-fx-cursor:hand;
+	-fx-alignment:center;
+}
+
+
+.online-music-vbox-box{
+	-fx-background-color:#202020;
+}
+
+
+.online-music-vbox-box-label{
+	-fx-background-color:#202020;
+	-fx-text-fill:white;
+	-fx-font-weight:bold;
+	-fx-border-color:transparent transparent firebrick transparent;
+	-fx-border-width:2.0;
+}
+
+.online-music-vbox-box-stack-label{
+	-fx-background-color:rgb(20.0,20.0,20.0,0.8);
+	-fx-text-fill:orange;
+	-fx-font-weight:bold;
+	-fx-cursor:hand;
+}
+
+
+/*******************************************************************************
+
+*                          Combo Box                            *
+
+******************************************************************************/
+
+
+.combo-box-base{
+    -fx-background-color: #202020;
+    -fx-padding: 2.0 2.0;
+}
+
+.combo-box-base:editable{
+    -fx-background-color: #FF0;
+}
+
+.combo-box-base:editable > .text-field {
+    -fx-border-image-source: null;
+    -fx-background-color: transparent;
+    -fx-padding: 1.0 0.0;
+}
+
+.combo-box-base > .arrow-button {
+   -fx-background-color: #202020;
+   -fx-padding: 0.0 4.0;
+  }
+
+.combo-box-base > .arrow-button > .arrow {
+    -fx-background-color: white;
+    -fx-background-insets: 0.0 0.0 0.0 0.0;
+    -fx-padding: 2.0 4.0;
+    -fx-shape: "M 0 0 H 7 L 3.5 4 z";
+}
+
+.combo-box-popup > .list-view {
+    -fx-border-style: solid;
+    -fx-border-width: 1.0;
+    -fx-border-color: black;
+    -fx-background-color: white;
+    -fx-background-insets: 0.0, 1.0;
+}
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell {
+    -fx-padding: 1.0 10.0;
+    -fx-background: red;
+}
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected {
+    -fx-background: green;
+    -fx-background-color: orange !important;
+}
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:hover,
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected:hover {
+    -fx-background-color: silver !important;
+}
+.combo-box-popup > .list-view > .placeholder > .label {
+    -fx-text-fill: blue;
+    
+}  
+    
+/*******************************************************************************
+
+*                         MenuButton                        *
+
+******************************************************************************/
+     
+.menu-button > .arrow-button > .arrow {
+ -fx-shape: "M3.5 0 L7 10 Q3.5 7 0 10z";
+ /* arrow down = M3.5 10 L7 0 Q3.5 3 0 0z */
+}
+
+/*******************************************************************************
+
+*                         TextFields                        *
+
+******************************************************************************/
+
+
+.dark-text-field,.search-box .text-field, .libraries-search-box .text-field{
+	
+	-fx-background-color:#303030;
+	-fx-text-fill:white;
+	-fx-font-weight:bold;
+}
+
+
+
+.dark-text-area{
+	
+	-fx-background-color:#202020;
+	-fx-text-fill:white;
+	-fx-fill:white;
+}
+
+.dark-text-area .content {
+    -fx-background-color: #202020;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
