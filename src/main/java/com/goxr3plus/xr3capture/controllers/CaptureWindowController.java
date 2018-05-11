@@ -35,7 +35,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import main.java.com.goxr3plus.xr3capture.application.CaptureWindow;
-import main.java.com.goxr3plus.xr3capture.application.Main;
 import main.java.com.goxr3plus.xr3capture.tools.ActionTool;
 import main.java.com.goxr3plus.xr3capture.tools.NotificationType;
 import main.java.com.goxr3plus.xr3capture.tools.SFileChooser;

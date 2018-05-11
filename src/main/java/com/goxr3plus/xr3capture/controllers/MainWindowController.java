@@ -9,7 +9,6 @@ import javafx.scene.control.Slider;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import main.java.com.goxr3plus.xr3capture.application.CaptureWindow;
-import main.java.com.goxr3plus.xr3capture.application.Main;
 
 /**
  * The Scene of the primary window of the application.
