@@ -6,7 +6,7 @@
 
 	<groupId>com.github.goxr3plus</groupId>
 	<artifactId>XR3Capture</artifactId>
-	<version>9.15.0</version>
+	<version>11.0.0</version>
 	<name>XR3Player</name>
 	<description>JavaFX Computer Screen Capture</description>
 	<url>https://github.com/goxr3plus/XR3Capture</url>
@@ -59,7 +59,7 @@
 				<configuration>
 					<source>11</source>
 					<target>11</target>
-					<release>1110</release>
+					<release>11</release>
 					<executable>javac11</executable>
 					<encoding>UTF-8</encoding>
 				</configuration>

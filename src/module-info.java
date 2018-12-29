@@ -18,6 +18,5 @@ module XR3Capture {
 	requires javafx.controls;
 	requires javafx.fxml;
 	requires javafx.graphics;
-	requires jdk.internal.le;
 	requires controlsfx;
 }
