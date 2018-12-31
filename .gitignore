@@ -54,3 +54,4 @@ bin/
 .classpath
 .project
 spartanizer.xml
+.settings
