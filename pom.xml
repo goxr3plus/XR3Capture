@@ -15,8 +15,8 @@
 	<packaging>jar</packaging>
 
 	<properties>
-		<maven.compiler.source>10</maven.compiler.source>
-		<maven.compiler.target>10</maven.compiler.target>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<ikonli.version>2.4.0</ikonli.version>
 	</properties>
@@ -58,9 +58,9 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.0</version>
 				<configuration>
-					<source>10</source>
-					<target>10</target>
-					<release>10</release>
+					<source>11</source>
+					<target>11</target>
+					<release>11</release>
 					<executable>javac10</executable>
 					<encoding>UTF-8</encoding>
 				</configuration>
@@ -142,7 +142,6 @@
 	<dependencies>
 
  		<!-- JavaFX -->
- 		<!--
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-controls</artifactId>
@@ -152,7 +151,7 @@
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-fxml</artifactId>
 			<version>11</version>
-		</dependency> -->
+		</dependency>
 
 		<!-- JAVAFX GRAPHICS LIBRARIES -->
 		<dependency>

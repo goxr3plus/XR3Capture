@@ -6,7 +6,6 @@
  *
  */
 module XR3Capture {
-	requires transitive java.compiler;
 	exports main.java.com.goxr3plus.xr3capture.controllers;
 	exports main.java.com.goxr3plus.xr3capture.application;
 	exports main.java.com.goxr3plus.xr3capture.utils;
