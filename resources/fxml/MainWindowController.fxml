@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXSlider?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.ImageView?>
@@ -15,13 +16,13 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<fx:root fx:id="root" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="170.0" prefWidth="258.0" style="-fx-background-color: #202020; -fx-border-color: transparent orange transparent orange; -fx-border-width: 2;" stylesheets="@../../style/application.css" type="StackPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="root" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="212.0" prefWidth="276.0" style="-fx-background-color: #202020; -fx-border-color: transparent orange transparent orange; -fx-border-width: 2;" stylesheets="@../css/application.css" type="StackPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane>
          <top>
             <HBox spacing="5.0">
                <children>
-                  <JFXButton fx:id="more" focusTraversable="false" maxWidth="1.7976931348623157E308" prefHeight="32.0" ripplerFill="#2b8e9e" styleClass="jfx-button3" text="Settings" HBox.hgrow="ALWAYS">
+                  <JFXButton fx:id="more" focusTraversable="false" maxWidth="1.7976931348623157E308" prefHeight="32.0" ripplerFill="#2b8e9e" styleClass="jfx-button-yellow" text="Settings" HBox.hgrow="ALWAYS">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -31,7 +32,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </JFXButton>
-                  <JFXButton fx:id="exitButton" contentDisplay="TEXT_ONLY" focusTraversable="false" minHeight="32.0" minWidth="32.0" ripplerFill="#1f9dd1" style="-fx-font-size: 11;" styleClass="jfx-button" text="X" HBox.hgrow="ALWAYS">
+                  <JFXButton fx:id="exitButton" contentDisplay="TEXT_ONLY" focusTraversable="false" minHeight="32.0" minWidth="32.0" ripplerFill="#1f9dd1" style="-fx-font-size: 11;" styleClass="jfx-button-red" text="X" HBox.hgrow="ALWAYS">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></JFXButton>
@@ -46,7 +47,7 @@
                <children>
                   <HBox alignment="CENTER">
                      <children>
-                        <JFXButton fx:id="captureButton" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" ripplerFill="#eaf213" styleClass="jfx-button2" text=" " textFill="#faac05" HBox.hgrow="ALWAYS">
+                        <JFXButton fx:id="captureButton" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" ripplerFill="#eaf213" styleClass="jfx-button-green" text=" " textFill="#faac05" HBox.hgrow="ALWAYS">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -63,11 +64,6 @@
                               <FontIcon iconColor="WHITE" iconLiteral="typ-camera" iconSize="90" />
                            </graphic>
                         </JFXButton>
-                        <JFXSlider fx:id="timeSlider" focusTraversable="false" majorTickUnit="1.0" max="9.0" minorTickCount="0" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" value="-1.0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </JFXSlider>
                         <JFXButton fx:id="openImageViewer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" ripplerFill="#e1da1b" text=" " visible="false">
                            <graphic>
                               <ImageView pickOnBounds="true" preserveRatio="true">
@@ -88,6 +84,12 @@
                         <Insets />
                      </opaqueInsets>
                   </HBox>
+                  <Label alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="white-black-label" text="Timer" />
+                  <JFXSlider fx:id="timeSlider" focusTraversable="false" majorTickUnit="1.0" max="9.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" value="-1.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXSlider>
                </children>
             </VBox>
          </center>

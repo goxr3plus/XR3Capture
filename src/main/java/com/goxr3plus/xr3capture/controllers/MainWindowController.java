@@ -119,7 +119,6 @@ public class MainWindowController extends StackPane {
 		minimize.setOnAction(a -> captureWindowStage.close()); //captureWindowStage.setIconified(true))
 		
 		// exitButton
-		exitButton.setText("Close");
 		exitButton.setOnAction(a -> captureWindowStage.close());
 		
 		// captureButton
