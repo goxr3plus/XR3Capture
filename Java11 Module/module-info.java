@@ -9,7 +9,8 @@ module XR3Capture {
 	requires transitive java.compiler;
 	exports main.java.com.goxr3plus.xr3capture.controllers;
 	exports main.java.com.goxr3plus.xr3capture.application;
-	exports main.java.com.goxr3plus.xr3capture.tools;
+	exports main.java.com.goxr3plus.xr3capture.utils;
+	exports main.java.com.goxr3plus.xr3capture.models;
 	opens main.java.com.goxr3plus.xr3capture.controllers to javafx.fxml;
 
 	requires com.jfoenix;

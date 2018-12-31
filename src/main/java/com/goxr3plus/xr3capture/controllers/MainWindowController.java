@@ -1,21 +1,25 @@
 package main.java.com.goxr3plus.xr3capture.controllers;
 
+import java.io.IOException;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXSlider;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
-import main.java.com.goxr3plus.xr3capture.application.CaptureWindow;
+import javafx.stage.Stage;
+import main.java.com.goxr3plus.xr3capture.utils.InfoTool;
 
 /**
  * The Scene of the primary window of the application.
  *
  * @author GOXR3PLUS
  */
-public class MainWindowController {
+public class MainWindowController extends StackPane {
 	
 	/** The root. */
 	@FXML
@@ -61,10 +65,32 @@ public class MainWindowController {
 	
 	/** The settings window controller. */
 	// References from other controllers
-	SettingsWindowController settingsWindowController;
+	private SettingsWindowController settingsWindowController;
 	
 	/** The capture window controller. */
-	CaptureWindowController captureWindowController;
+	private CaptureWindowController captureWindowController;
+	
+	private final Stage captureWindowStage;
+	
+	/**
+	 * Constructor
+	 */
+	public MainWindowController(final Stage captureWindowStage) {
+		this.captureWindowStage = captureWindowStage;
+		
+		// ------------------------------------FXMLLOADER ----------------------------------------
+		final FXMLLoader loader = new FXMLLoader(getClass().getResource(InfoTool.FXMLS + "MainWindowController.fxml"));
+		loader.setController(this);
+		loader.setRoot(this);
+		
+		try {
+			loader.load();
+		} catch (final IOException ex) {
+			//logger.log(Level.SEVERE, "", ex)
+			ex.printStackTrace();
+		}
+		
+	}
 	
 	/**
 	 * Add the needed references from the other controllers.
@@ -74,8 +100,7 @@ public class MainWindowController {
 	 * @param settingsWindowController
 	 *            the settings window controller
 	 */
-	@SuppressWarnings("hiding")
-	public void addControllerReferences(CaptureWindowController captureWindowController , SettingsWindowController settingsWindowController) {
+	public void addControllerReferences(final CaptureWindowController captureWindowController , final SettingsWindowController settingsWindowController) {
 		
 		this.captureWindowController = captureWindowController;
 		this.settingsWindowController = settingsWindowController;
@@ -88,18 +113,14 @@ public class MainWindowController {
 	public void initialize() {
 		
 		// more
-		more.setOnAction(a -> settingsWindowController.show());
+		more.setOnAction(a -> settingsWindowController.getStage().show());
 		
 		// minimize
-		minimize.setOnAction(a -> CaptureWindow.stage.setIconified(true));
+		minimize.setOnAction(a -> captureWindowStage.close()); //captureWindowStage.setIconified(true))
 		
 		// exitButton
 		exitButton.setText("Close");
-		exitButton.setOnAction(a -> {
-			CaptureWindow.stage.close();
-			//DataBase.saveDataBaseSettings(settingsWindowController);
-			// Platform.exit();
-		});
+		exitButton.setOnAction(a -> captureWindowStage.close());
 		
 		// captureButton
 		captureButton.setOnAction(a -> captureWindowController.prepareForCapture());

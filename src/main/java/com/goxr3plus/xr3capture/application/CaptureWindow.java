@@ -6,11 +6,9 @@ package main.java.com.goxr3plus.xr3capture.application;
 import java.util.concurrent.CountDownLatch;
 
 import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.NodeOrientation;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -30,7 +28,7 @@ public class CaptureWindow {
 	private Thread positionFixerThread;
 	
 	/** The stage. */
-	public static Stage stage = new Stage();
+	private Stage stage;
 	
 	/** The main window controller. */
 	public MainWindowController mainWindowController;
@@ -52,25 +50,26 @@ public class CaptureWindow {
 		try {
 			
 			// stage
-			stage.setTitle("XR3Capture Version 9!");
-			stage.getIcons().add(new Image(getClass().getResourceAsStream("/image/icon.png")));
+			stage = new Stage();
+			stage.setTitle("XR3Capture");
+			//stage.getIcons().add(new Image(getClass().getResourceAsStream("/image/icon.png")))
 			stage.initStyle(StageStyle.TRANSPARENT);
 			stage.setAlwaysOnTop(true);
 			
 			// MainWindowController
-			FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/fxml/MainWindowController.fxml"));
-			loader1.load();
-			mainWindowController = loader1.getController();
+			//FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/fxml/xr3capture/MainWindowController.fxml"))
+			//loader1.load()
+			mainWindowController = new MainWindowController(stage);
 			
 			// CaptureWindowController
-			FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/fxml/CaptureWindowController.fxml"));
-			loader2.load();
-			captureWindowController = loader2.getController();
+			//FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/fxml/xr3capture/CaptureWindowController.fxml"))
+			//	loader2.load()
+			captureWindowController = new CaptureWindowController(stage);
 			
 			// SettingsController
-			FXMLLoader loader3 = new FXMLLoader(getClass().getResource("/fxml/SettingsWindowController.fxml"));
-			loader3.load();
-			settingsWindowController = loader3.getController();
+			//	FXMLLoader loader3 = new FXMLLoader(getClass().getResource("/fxml/xr3capture/SettingsWindowController.fxml"))
+			//	loader3.load()
+			settingsWindowController = new SettingsWindowController();
 			
 			// Add References between controllers
 			mainWindowController.addControllerReferences(captureWindowController, settingsWindowController);
@@ -81,13 +80,13 @@ public class CaptureWindow {
 			//DataBase.loadDataBaseSettings(settingsWindowController)
 			
 			// Finally
-			stage.setScene(new Scene(loader1.getRoot(), Color.TRANSPARENT));
+			stage.setScene(new Scene(mainWindowController, Color.TRANSPARENT));
 			//stage.show()
 			
 			stage.setOnShown(s -> startPositionFixThread());
 			stage.setOnHidden(h -> stopPositionFixThread());
 			
-		} catch (Exception ex) {
+		} catch (final Exception ex) {
 			ex.printStackTrace();
 		}
 		
@@ -112,10 +111,10 @@ public class CaptureWindow {
 				while (true) {
 					
 					// CountDownLatch
-					CountDownLatch count = new CountDownLatch(1);
+					final CountDownLatch count = new CountDownLatch(1);
 					
 					// Get VisualBounds of the Primary Screen
-					Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+					final Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
 					Platform.runLater(() -> {
 						
 						//Fix the window position
@@ -130,7 +129,7 @@ public class CaptureWindow {
 					Thread.sleep(500);
 					
 				}
-			} catch (@SuppressWarnings("unused") InterruptedException ex) {
+			} catch (@SuppressWarnings("unused") final InterruptedException ex) {
 				positionFixerThread.interrupt();
 				//fuck dis error it is not fatal
 				//Logger.getLogger(CaptureWindow.class.getName()).log(Level.WARNING, null, ex)
@@ -149,6 +148,13 @@ public class CaptureWindow {
 	private void stopPositionFixThread() {
 		if (positionFixerThread != null && positionFixerThread.isAlive())
 			positionFixerThread.interrupt();
+	}
+	
+	/**
+	 * @return the stage
+	 */
+	public Stage getStage() {
+		return stage;
 	}
 	
 }

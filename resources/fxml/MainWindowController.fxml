@@ -6,7 +6,6 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.Tooltip?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -14,24 +13,25 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<StackPane fx:id="root" nodeOrientation="LEFT_TO_RIGHT" prefHeight="170.0" style="-fx-background-color: #202020; -fx-border-color: transparent orange transparent orange; -fx-border-width: 2;" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.goxr3plus.xr3capture.controllers.MainWindowController">
+<fx:root fx:id="root" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="170.0" prefWidth="258.0" style="-fx-background-color: #202020; -fx-border-color: transparent orange transparent orange; -fx-border-width: 2;" stylesheets="@../../style/application.css" type="StackPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane>
          <top>
             <HBox spacing="5.0">
                <children>
-                  <JFXButton fx:id="more" focusTraversable="false" prefHeight="27.0" prefWidth="81.0" ripplerFill="#2b8e9e" styleClass="jfx-button3" text="Settings" HBox.hgrow="ALWAYS">
+                  <JFXButton fx:id="more" focusTraversable="false" maxWidth="1.7976931348623157E308" prefHeight="32.0" ripplerFill="#2b8e9e" styleClass="jfx-button3" text="Settings" HBox.hgrow="ALWAYS">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </JFXButton>
-                  <JFXButton fx:id="minimize" focusTraversable="false" prefHeight="27.0" prefWidth="82.0" ripplerFill="#1f9dd1" styleClass="jfx-button3" text="Minimize" HBox.hgrow="ALWAYS">
+                  <JFXButton fx:id="minimize" contentDisplay="TEXT_ONLY" focusTraversable="false" minHeight="32.0" minWidth="32.0" ripplerFill="#1f9dd1" styleClass="jfx-button" text="-" HBox.hgrow="ALWAYS">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </JFXButton>
-                  <JFXButton fx:id="exitButton" focusTraversable="false" prefHeight="27.0" prefWidth="67.0" ripplerFill="#1f9dd1" styleClass="jfx-button3" text="Exit" HBox.hgrow="ALWAYS">
+                  <JFXButton fx:id="exitButton" contentDisplay="TEXT_ONLY" focusTraversable="false" minHeight="32.0" minWidth="32.0" ripplerFill="#1f9dd1" style="-fx-font-size: 11;" styleClass="jfx-button" text="X" HBox.hgrow="ALWAYS">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></JFXButton>
@@ -46,14 +46,7 @@
                <children>
                   <HBox alignment="CENTER">
                      <children>
-                        <JFXButton fx:id="captureButton" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" ripplerFill="#eaf213" styleClass="jfx-button3" text=" " textFill="#faac05" HBox.hgrow="ALWAYS">
-                           <graphic>
-                              <ImageView nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true">
-                                 <image>
-                                    <Image url="@../image/capture.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
+                        <JFXButton fx:id="captureButton" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" ripplerFill="#eaf213" styleClass="jfx-button2" text=" " textFill="#faac05" HBox.hgrow="ALWAYS">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -66,6 +59,9 @@
                            <HBox.margin>
                               <Insets bottom="4.0" left="2.0" right="5.0" top="2.0" />
                            </HBox.margin>
+                           <graphic>
+                              <FontIcon iconColor="WHITE" iconLiteral="typ-camera" iconSize="90" />
+                           </graphic>
                         </JFXButton>
                         <JFXSlider fx:id="timeSlider" focusTraversable="false" majorTickUnit="1.0" max="9.0" minorTickCount="0" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" value="-1.0">
                            <cursor>
@@ -75,9 +71,6 @@
                         <JFXButton fx:id="openImageViewer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" ripplerFill="#e1da1b" text=" " visible="false">
                            <graphic>
                               <ImageView pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../image/imageViewer.png" />
-                                 </image>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -105,4 +98,4 @@
    <padding>
       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
    </padding>
-</StackPane>
+</fx:root>

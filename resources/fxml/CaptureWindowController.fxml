@@ -4,7 +4,7 @@
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane fx:id="stackPane" prefHeight="406.0" prefWidth="514.0" style="-fx-background-color: rgb(0,0,0,0.01);" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.goxr3plus.xr3capture.controllers.CaptureWindowController">
+<fx:root fx:id="stackPane" prefHeight="406.0" prefWidth="514.0" style="-fx-background-color: rgb(0,0,0,0.01);" type="StackPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;">
          <children>
@@ -18,4 +18,4 @@
    <cursor>
       <Cursor fx:constant="DEFAULT" />
    </cursor>
-</StackPane>
+</fx:root>
