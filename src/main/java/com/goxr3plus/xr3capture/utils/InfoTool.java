@@ -34,7 +34,7 @@ public final class InfoTool {
 	public static final String STYLES = "/style/";
 	
 	/** The Constant applicationCss. */
-	public static final String APPLICATIONCSS = "application.css";
+	//public static final String APPLICATIONCSS = "application.css";
 	
 	/** The Constant fxmls. */
 	public static final String FXMLS = "/fxml/";
@@ -56,7 +56,7 @@ public final class InfoTool {
 	 *        class file is. <b>[it ends with File.Separator!!]</b>
 	 * @author GOXR3PLUS[StackOverFlow user] + bachden [StackOverFlow user]
 	 */
-	public static final String getBasePathForClass(Class<?> classs) {
+	public static final String getBasePathForClass(final Class<?> classs) {
 		
 		// Local variables
 		File file;
@@ -68,7 +68,7 @@ public final class InfoTool {
 			file = new File(classs.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
 			
 			basePath = ( file.isFile() || file.getPath().endsWith(".jar") || file.getPath().endsWith(".zip") ) ? file.getParent() : file.getPath();
-		} catch (URISyntaxException ex) {
+		} catch (final URISyntaxException ex) {
 			failed = true;
 			Logger.getLogger(classs.getName()).log(Level.WARNING, "Cannot firgue out base path for class with way (1): ", ex);
 		}
@@ -83,7 +83,7 @@ public final class InfoTool {
 				// starts with File.separator?
 				// String l = local.replaceFirst("[" + File.separator +
 				// "/\\\\]", "")
-			} catch (URISyntaxException ex) {
+			} catch (final URISyntaxException ex) {
 				Logger.getLogger(classs.getName()).log(Level.WARNING, "Cannot firgue out base path for class with way (2): ", ex);
 			}
 		
@@ -110,11 +110,11 @@ public final class InfoTool {
 	 *        the host
 	 * @return <b> true </b> if Connected on Internet,<b> false </b> if not.
 	 */
-	public static boolean isReachableByPing(String host) {
+	public static boolean isReachableByPing(final String host) {
 		try {
 			
 			// Start a new Process
-			Process process = Runtime.getRuntime().exec("ping -" + ( System.getProperty("os.name").toLowerCase().startsWith("windows") ? "n" : "c" ) + " 1 " + host);
+			final Process process = Runtime.getRuntime().exec("ping -" + ( System.getProperty("os.name").toLowerCase().startsWith("windows") ? "n" : "c" ) + " 1 " + host);
 			
 			//Wait for it to finish
 			process.waitFor();
@@ -122,7 +122,7 @@ public final class InfoTool {
 			//Check the return value
 			return process.exitValue() == 0;
 			
-		} catch (Exception ex) {
+		} catch (final Exception ex) {
 			Logger.getLogger(Main.class.getName()).log(Level.INFO, null, ex);
 			return false;
 		}
@@ -137,7 +137,7 @@ public final class InfoTool {
 	 * @return Returns an image which is already into the resources folder of
 	 *         the application
 	 */
-	public static Image getImageFromResourcesFolder(String imageName) {
+	public static Image getImageFromResourcesFolder(final String imageName) {
 		return new Image(InfoTool.class.getResourceAsStream(IMAGES + imageName));
 	}
 	
@@ -148,10 +148,10 @@ public final class InfoTool {
 	 *        File size in bytes
 	 * @return <b> a String representing the file size in MB and kB </b>
 	 */
-	public static String getFileSizeEdited(long bytes) {
+	public static String getFileSizeEdited(final long bytes) {
 		
 		//Find it	
-		int kilobytes = (int) ( bytes / 1024 ) , megabytes = kilobytes / 1024;
+		final int kilobytes = (int) ( bytes / 1024 ) , megabytes = kilobytes / 1024;
 		if (kilobytes < 1024)
 			return kilobytes + " KiB";
 		else if (kilobytes > 1024)
