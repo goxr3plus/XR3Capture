@@ -6,7 +6,7 @@
 
 	<groupId>com.github.goxr3plus</groupId>
 	<artifactId>XR3Capture</artifactId>
-	<version>V11.2</version>
+	<version>V10.0</version>
 	<name>XR3Player</name>
 	<description>JavaFX Computer Screen Capture</description>
 	<url>https://github.com/goxr3plus/XR3Capture</url>
@@ -15,8 +15,8 @@
 	<packaging>jar</packaging>
 
 	<properties>
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.source>10</maven.compiler.source>
+		<maven.compiler.target>10</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<ikonli.version>2.4.0</ikonli.version>
 	</properties>
@@ -58,9 +58,9 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.0</version>
 				<configuration>
-					<source>11</source>
-					<target>11</target>
-					<release>11</release>
+					<source>10</source>
+					<target>10</target>
+					<release>10</release>
 					<executable>javac10</executable>
 					<encoding>UTF-8</encoding>
 				</configuration>
