@@ -20,151 +20,156 @@ import main.java.com.goxr3plus.xr3capture.utils.InfoTool;
  * @author GOXR3PLUS
  */
 public class WindowController extends StackPane {
-	
+
 	/** The root. */
 	@FXML
 	private StackPane root;
-	
+
 	/** The more. */
 	@FXML
 	private JFXButton more;
-	
+
 	/** The minimize. */
 	@FXML
 	private JFXButton minimize;
-	
+
 	/** The exit button. */
 	@FXML
 	private JFXButton exitButton;
-	
+
 	/** The time slider. */
 	@FXML
 	private JFXSlider timeSlider;
-	
+
 	/** The capture button. */
 	@FXML
 	private JFXButton captureButton;
-	
+
 	/** The open image viewer. */
 	@FXML
 	private JFXButton openImageViewer;
-	
+
 	/** The region. */
 	@FXML
 	private Region region;
-	
+
 	/** The progress bar. */
 	@FXML
 	private ProgressIndicator progressBar;
-	
+
 	// --------------------------------------------
-	
+
 	/** The image viewer thread. */
 	// The thread which is opening imageViewer
 	private Thread imageViewerThread;
-	
+
 	/** The settings window controller. */
 	// References from other controllers
 	private SettingsWindowController settingsWindowController;
-	
+
 	/** The capture window controller. */
 	private CaptureWindowController captureWindowController;
-	
+
 	private final Stage captureWindowStage;
-	
+
 	/**
 	 * Constructor
 	 */
 	public WindowController(final Stage captureWindowStage) {
 		this.captureWindowStage = captureWindowStage;
-		
-		// ------------------------------------FXMLLOADER ----------------------------------------
+
+		// ------------------------------------FXMLLOADER
+		// ----------------------------------------
 		final FXMLLoader loader = new FXMLLoader(getClass().getResource(InfoTool.FXMLS + "WindowController.fxml"));
 		loader.setController(this);
 		loader.setRoot(this);
-		
+
 		try {
 			loader.load();
 		} catch (final IOException ex) {
-			//logger.log(Level.SEVERE, "", ex)
+			// logger.log(Level.SEVERE, "", ex)
 			ex.printStackTrace();
 		}
-		
+
 	}
-	
+
 	/**
 	 * Add the needed references from the other controllers.
 	 *
-	 * @param captureWindowController
-	 *            the capture window controller
-	 * @param settingsWindowController
-	 *            the settings window controller
+	 * @param captureWindowController  the capture window controller
+	 * @param settingsWindowController the settings window controller
 	 */
-	public void addControllerReferences(final CaptureWindowController captureWindowController , final SettingsWindowController settingsWindowController) {
-		
+	public void addControllerReferences(final CaptureWindowController captureWindowController,
+			final SettingsWindowController settingsWindowController) {
+
 		this.captureWindowController = captureWindowController;
 		this.settingsWindowController = settingsWindowController;
 	}
-	
+
 	/**
 	 * Will be called as soon as FXML file is loaded.
 	 */
 	@FXML
 	public void initialize() {
-		
+
 		// more
 		more.setOnAction(a -> settingsWindowController.getStage().show());
-		
+
 		// minimize
-		minimize.setOnAction(a -> captureWindowStage.close()); //captureWindowStage.setIconified(true))
-		
+		minimize.setOnAction(a -> captureWindowStage.close()); // captureWindowStage.setIconified(true))
+
 		// exitButton
 		exitButton.setOnAction(a -> captureWindowStage.close());
-		
+
 		// captureButton
 		captureButton.setOnAction(a -> captureWindowController.prepareForCapture());
-		
+
 		// region
 		region.visibleProperty().bind(progressBar.visibleProperty());
-		
+
 		// openImageViewer
 		openImageViewer.setOnAction(ac -> {
-			//	    // isAlive?
-			//	    if (imageViewerThread != null && imageViewerThread.isAlive()) {
-			//		ac.consume();
-			//		return;
-			//	    }
+			// // isAlive?
+			// if (imageViewerThread != null && imageViewerThread.isAlive()) {
+			// ac.consume();
+			// return;
+			// }
 			//
-			//	    // Open ImageViewer
-			//	    String path = "";//= DataBase.getBasePathForClass(DataBase.class);
+			// // Open ImageViewer
+			// String path = "";//= DataBase.getBasePathForClass(DataBase.class);
 			//
-			//	    imageViewerThread = new Thread(() -> {
-			//		Platform.runLater(Notifications.create().title("Processing").text("Opening XR3ImageViewer....\n Current path is: " + path).hideAfter(Duration.millis(2000))::show);
+			// imageViewerThread = new Thread(() -> {
+			// Platform.runLater(Notifications.create().title("Processing").text("Opening
+			// XR3ImageViewer....\n Current path is: " +
+			// path).hideAfter(Duration.millis(2000))::show);
 			//
-			//		try {
+			// try {
 			//
-			//		    ProcessBuilder builder = new ProcessBuilder("java", "-jar", path + "XR3ImageViewer.jar");
-			//		    Process process = builder.start();
-			//		    process.waitFor();
+			// ProcessBuilder builder = new ProcessBuilder("java", "-jar", path +
+			// "XR3ImageViewer.jar");
+			// Process process = builder.start();
+			// process.waitFor();
 			//
-			//		    if (process.exitValue() != 0)
-			//			Platform.runLater(Notifications.create().title("Error").text("Can't open XR3ImageViewer!\nBuilder Directory:" + path + "\nTrying to start:" + path + "XR3ImageViewer.jar")
-			//				.hideAfter(Duration.millis(2000))::showError);
+			// if (process.exitValue() != 0)
+			// Platform.runLater(Notifications.create().title("Error").text("Can't open
+			// XR3ImageViewer!\nBuilder Directory:" + path + "\nTrying to start:" + path +
+			// "XR3ImageViewer.jar")
+			// .hideAfter(Duration.millis(2000))::showError);
 			//
-			//		} catch (IOException | InterruptedException ex) {
-			//		    Logger.getLogger(getClass().getName()).log(Level.INFO, null, ex);
-			//		}
-			//	    });
+			// } catch (IOException | InterruptedException ex) {
+			// Logger.getLogger(getClass().getName()).log(Level.INFO, null, ex);
+			// }
+			// });
 			//
-			//	    imageViewerThread.setDaemon(true);
-			//	    imageViewerThread.start();
-			
+			// imageViewerThread.setDaemon(true);
+			// imageViewerThread.start();
+
 		});
-		
+
 		// timeSlider
-		timeSlider.setOnScroll(s -> timeSlider.setValue(timeSlider.getValue() + ( s.getDeltaY() > 0 ? 1 : -1 )));
+		timeSlider.setOnScroll(s -> timeSlider.setValue(timeSlider.getValue() + (s.getDeltaY() > 0 ? 1 : -1)));
 	}
-	
+
 	/**
 	 * Gets the time slider.
 	 *
@@ -173,7 +178,7 @@ public class WindowController extends StackPane {
 	public Slider getTimeSlider() {
 		return timeSlider;
 	}
-	
+
 	/**
 	 * Gets the root.
 	 *

@@ -48,7 +48,7 @@ public class CaptureWindow {
 	public CaptureWindow() {
 		
 		try {
-			
+			 
 			// stage
 			stage = new Stage();
 			stage.setTitle("XR3Capture");

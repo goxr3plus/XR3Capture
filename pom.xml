@@ -6,7 +6,7 @@
 
 	<groupId>com.github.goxr3plus</groupId>
 	<artifactId>XR3Capture</artifactId>
-	<version>V10</version>
+	<version>V12</version>
 	<name>XR3Player</name>
 	<description>JavaFX Computer Screen Capture</description>
 	<url>https://github.com/goxr3plus/XR3Capture</url>
@@ -24,12 +24,6 @@
 	<build>
 		<finalName>XR3Capture-${project.version}</finalName>
 		<sourceDirectory>src</sourceDirectory>
-		<resources>
-			<resource>
-				<directory>resources</directory>
-			</resource>
-		</resources>
-		<!-- <testSourceDirectory>testing</testSourceDirectory> -->
 		<plugins>
 
 			<!-- Maven Source Plugin -->
@@ -141,17 +135,10 @@
 
 	<dependencies>
 
- 		<!-- JavaFX -->
-<!-- 		<dependency>
-			<groupId>org.openjfx</groupId>
-			<artifactId>javafx-controls</artifactId>
-			<version>11</version>
-		</dependency>
-		<dependency>
-			<groupId>org.openjfx</groupId>
-			<artifactId>javafx-fxml</artifactId>
-			<version>11</version>
-		</dependency> -->
+		<!-- JavaFX -->
+		<!-- <dependency> <groupId>org.openjfx</groupId> <artifactId>javafx-controls</artifactId> 
+			<version>11</version> </dependency> <dependency> <groupId>org.openjfx</groupId> 
+			<artifactId>javafx-fxml</artifactId> <version>11</version> </dependency> -->
 
 		<!-- JAVAFX GRAPHICS LIBRARIES -->
 		<dependency>

@@ -17,79 +17,81 @@ import main.java.com.goxr3plus.xr3capture.application.Main;
  * @author GOXR3PLUS
  */
 public final class InfoTool {
-	
+
 	/** Logger */
 	public static final Logger logger = Logger.getLogger(InfoTool.class.getName());
-	
+
 	/** WebSite url */
 	public static final String WEBSITE = "http://goxr3plus.co.nf";
-	
+
 	/** XR3Player Tutorials */
 	public static final String TUTORIALS = "https://www.youtube.com/playlist?list=PL-xqaiRUr_iRKDkpFWPfSRFmJvHSr1VJI";
-	
+
+	private static final String COMMON = "";
+
 	/** The Constant images. */
-	public static final String IMAGES = "/image/";
-	
+	public static final String IMAGES = COMMON + "/image/";
+
 	/** The Constant styLes. */
-	public static final String STYLES = "/style/";
-	
-	/** The Constant applicationCss. */
-	//public static final String APPLICATIONCSS = "application.css";
-	
+	public static final String STYLES = COMMON + "/style/";
+
 	/** The Constant fxmls. */
-	public static final String FXMLS = "/fxml/";
-	
+	public static final String FXMLS = COMMON + "/fxml/";
+
 	// --------------------------------------------------------------------------------------------------------------
-	
+
 	/**
 	 * Private Constructor , we don't want instances of this class
 	 */
 	private InfoTool() {
 	}
-	
+
 	/**
-	 * Returns the absolute path of the current directory in which the given
-	 * class file is.
+	 * Returns the absolute path of the current directory in which the given class
+	 * file is.
 	 * 
-	 * @param classs
-	 *        * @return The absolute path of the current directory in which the
-	 *        class file is. <b>[it ends with File.Separator!!]</b>
+	 * @param classs * @return The absolute path of the current directory in which
+	 *               the class file is. <b>[it ends with File.Separator!!]</b>
 	 * @author GOXR3PLUS[StackOverFlow user] + bachden [StackOverFlow user]
 	 */
 	public static final String getBasePathForClass(final Class<?> classs) {
-		
+
 		// Local variables
 		File file;
 		String basePath = "";
 		boolean failed = false;
-		
+
 		// Let's give a first try
 		try {
 			file = new File(classs.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
-			
-			basePath = ( file.isFile() || file.getPath().endsWith(".jar") || file.getPath().endsWith(".zip") ) ? file.getParent() : file.getPath();
+
+			basePath = (file.isFile() || file.getPath().endsWith(".jar") || file.getPath().endsWith(".zip"))
+					? file.getParent()
+					: file.getPath();
 		} catch (final URISyntaxException ex) {
 			failed = true;
-			Logger.getLogger(classs.getName()).log(Level.WARNING, "Cannot firgue out base path for class with way (1): ", ex);
+			Logger.getLogger(classs.getName()).log(Level.WARNING,
+					"Cannot firgue out base path for class with way (1): ", ex);
 		}
-		
+
 		// The above failed?
 		if (failed)
 			try {
 				file = new File(classs.getClassLoader().getResource("").toURI().getPath());
 				basePath = file.getAbsolutePath();
-				
+
 				// the below is for testing purposes...
 				// starts with File.separator?
 				// String l = local.replaceFirst("[" + File.separator +
 				// "/\\\\]", "")
 			} catch (final URISyntaxException ex) {
-				Logger.getLogger(classs.getName()).log(Level.WARNING, "Cannot firgue out base path for class with way (2): ", ex);
+				Logger.getLogger(classs.getName()).log(Level.WARNING,
+						"Cannot firgue out base path for class with way (2): ", ex);
 			}
-		
+
 		// fix to run inside Eclipse
-		if (basePath.endsWith(File.separator + "lib") || basePath.endsWith(File.separator + "bin") || basePath.endsWith("bin" + File.separator)
-				|| basePath.endsWith("lib" + File.separator)) {
+		if (basePath.endsWith(File.separator + "lib") || basePath.endsWith(File.separator + "bin")
+				|| basePath.endsWith("bin" + File.separator) || basePath.endsWith("lib" + File.separator)) {
 			basePath = basePath.substring(0, basePath.length() - 4);
 		}
 		// fix to run inside NetBeans
@@ -99,66 +101,63 @@ public final class InfoTool {
 		// end fix
 		if (!basePath.endsWith(File.separator))
 			basePath += File.separator;
-		
+
 		return basePath;
 	}
-	
+
 	/**
 	 * Checks if a web site is reachable using ping command.
 	 *
-	 * @param host
-	 *        the host
+	 * @param host the host
 	 * @return <b> true </b> if Connected on Internet,<b> false </b> if not.
 	 */
 	public static boolean isReachableByPing(final String host) {
 		try {
-			
+
 			// Start a new Process
-			final Process process = Runtime.getRuntime().exec("ping -" + ( System.getProperty("os.name").toLowerCase().startsWith("windows") ? "n" : "c" ) + " 1 " + host);
-			
-			//Wait for it to finish
+			final Process process = Runtime.getRuntime().exec("ping -"
+					+ (System.getProperty("os.name").toLowerCase().startsWith("windows") ? "n" : "c") + " 1 " + host);
+
+			// Wait for it to finish
 			process.waitFor();
-			
-			//Check the return value
+
+			// Check the return value
 			return process.exitValue() == 0;
-			
+
 		} catch (final Exception ex) {
 			Logger.getLogger(Main.class.getName()).log(Level.INFO, null, ex);
 			return false;
 		}
 	}
-	
+
 	/**
-	 * Use this method to retrieve an image from the resources of the
-	 * application.
+	 * Use this method to retrieve an image from the resources of the application.
 	 *
-	 * @param imageName
-	 *        the image name
-	 * @return Returns an image which is already into the resources folder of
-	 *         the application
+	 * @param imageName the image name
+	 * @return Returns an image which is already into the resources folder of the
+	 *         application
 	 */
 	public static Image getImageFromResourcesFolder(final String imageName) {
 		return new Image(InfoTool.class.getResourceAsStream(IMAGES + imageName));
 	}
-	
+
 	/**
 	 * Gets the file size edited in format "x MiB , y KiB"
 	 *
-	 * @param bytes
-	 *        File size in bytes
+	 * @param bytes File size in bytes
 	 * @return <b> a String representing the file size in MB and kB </b>
 	 */
 	public static String getFileSizeEdited(final long bytes) {
-		
-		//Find it	
-		final int kilobytes = (int) ( bytes / 1024 ) , megabytes = kilobytes / 1024;
+
+		// Find it
+		final int kilobytes = (int) (bytes / 1024), megabytes = kilobytes / 1024;
 		if (kilobytes < 1024)
 			return kilobytes + " KiB";
 		else if (kilobytes > 1024)
-			return megabytes + " MiB + " + ( kilobytes - ( megabytes * 1024 ) ) + " KiB";
-		
+			return megabytes + " MiB + " + (kilobytes - (megabytes * 1024)) + " KiB";
+
 		return "error";
-		
+
 	}
-	
+
 }
