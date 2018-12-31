@@ -43,7 +43,7 @@ public class SettingsWindowController extends BorderPane {
 	
 	/** The main window controller. */
 	// --------------------
-	MainWindowController mainWindowController;
+	WindowController mainWindowController;
 	
 	/** The capture window controller. */
 	CaptureWindowController captureWindowController;
@@ -96,7 +96,7 @@ public class SettingsWindowController extends BorderPane {
 	 *            the capture window controller
 	 */
 	@SuppressWarnings("hiding")
-	public void addControllerReferences(final MainWindowController mainWindowController , final CaptureWindowController captureWindowController) {
+	public void addControllerReferences(final WindowController mainWindowController , final CaptureWindowController captureWindowController) {
 		
 		this.mainWindowController = mainWindowController;
 		this.captureWindowController = captureWindowController;

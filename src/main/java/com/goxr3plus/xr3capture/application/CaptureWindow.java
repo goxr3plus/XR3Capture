@@ -14,7 +14,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import main.java.com.goxr3plus.xr3capture.controllers.CaptureWindowController;
-import main.java.com.goxr3plus.xr3capture.controllers.MainWindowController;
+import main.java.com.goxr3plus.xr3capture.controllers.WindowController;
 import main.java.com.goxr3plus.xr3capture.controllers.SettingsWindowController;
 
 /**
@@ -31,7 +31,7 @@ public class CaptureWindow {
 	private Stage stage;
 	
 	/** The main window controller. */
-	public MainWindowController mainWindowController;
+	public WindowController mainWindowController;
 	
 	/** The Capture Window of the application. */
 	public CaptureWindowController captureWindowController;
@@ -59,7 +59,7 @@ public class CaptureWindow {
 			// MainWindowController
 			//FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/fxml/xr3capture/MainWindowController.fxml"))
 			//loader1.load()
-			mainWindowController = new MainWindowController(stage);
+			mainWindowController = new WindowController(stage);
 			
 			// CaptureWindowController
 			//FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/fxml/xr3capture/CaptureWindowController.fxml"))

@@ -19,7 +19,7 @@ import main.java.com.goxr3plus.xr3capture.utils.InfoTool;
  *
  * @author GOXR3PLUS
  */
-public class MainWindowController extends StackPane {
+public class WindowController extends StackPane {
 	
 	/** The root. */
 	@FXML
@@ -75,11 +75,11 @@ public class MainWindowController extends StackPane {
 	/**
 	 * Constructor
 	 */
-	public MainWindowController(final Stage captureWindowStage) {
+	public WindowController(final Stage captureWindowStage) {
 		this.captureWindowStage = captureWindowStage;
 		
 		// ------------------------------------FXMLLOADER ----------------------------------------
-		final FXMLLoader loader = new FXMLLoader(getClass().getResource(InfoTool.FXMLS + "MainWindowController.fxml"));
+		final FXMLLoader loader = new FXMLLoader(getClass().getResource(InfoTool.FXMLS + "WindowController.fxml"));
 		loader.setController(this);
 		loader.setRoot(this);
 		

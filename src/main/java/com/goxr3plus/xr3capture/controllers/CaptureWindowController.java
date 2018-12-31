@@ -221,7 +221,7 @@ public class CaptureWindowController extends StackPane {
 	Thread countingThread;
 	
 	/** The main window controller. */
-	MainWindowController mainWindowController;
+	WindowController mainWindowController;
 	
 	/** The settings window controller. */
 	SettingsWindowController settingsWindowController;
@@ -255,7 +255,7 @@ public class CaptureWindowController extends StackPane {
 	 *            the settings window controller
 	 */
 	@SuppressWarnings("hiding")
-	public void addControllerReferences(final MainWindowController mainWindowController , final SettingsWindowController settingsWindowController) {
+	public void addControllerReferences(final WindowController mainWindowController , final SettingsWindowController settingsWindowController) {
 		
 		this.mainWindowController = mainWindowController;
 		this.settingsWindowController = settingsWindowController;
