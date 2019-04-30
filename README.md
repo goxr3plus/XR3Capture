@@ -36,7 +36,7 @@ Is a JavaFX application which allows you to take screen shots of your computer a
 <dependency>
 	 <groupId>com.github.goxr3plus</groupId>
 	 <artifactId>JavaFX-Web-Browser</artifactId>
-	 <version>V9.12</version>
+	 <version>10.0.2</version>
 </dependency>
 ```
 
