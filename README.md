@@ -1,9 +1,11 @@
 ---
 
 <h3 align="center" > XR3Capture ( <a href="https://www.youtube.com/watch?v=s4TGWYBdv0E" target="_blank">Demo</a> )</h3>
-<p align="center">
-📸
-</p>
+
+| DJ UI | Chromium Web Browser 
+|:-:|:-:|
+| ![1](https://user-images.githubusercontent.com/20374208/69632235-75a26e80-1057-11ea-9969-942197f188da.jpeg) | ![1 (1)](https://user-images.githubusercontent.com/20374208/69632236-75a26e80-1057-11ea-96af-f0ba038fb392.jpeg) |
+
 <p align="center">
 <sup>
 <b>Is a JavaFX application which allows you to take screen shots of your computer and with the help of another app XR3ImageViewer you can also view the result image. </b>
