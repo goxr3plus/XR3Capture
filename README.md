@@ -1,8 +1,16 @@
-> Release V101 and above are under work for Java 10 and Java 11 modularization 
+---
 
-# XR3Capture
+<h3 align="center" > XR3Capture ( <a href="https://www.youtube.com/watch?v=s4TGWYBdv0E" target="_blank">Demo</a> )</h3>
+<p align="center">
+📸
+</p>
+<p align="center">
+<sup>
+<b>Is a JavaFX application which allows you to take screen shots of your computer and with the help of another app XR3ImageViewer you can also view the result image. </b>
+</sup>
+</p>
 
-Is a JavaFX application which allows you to take screen shots of your computer and with the help of another app XR3ImageViewer you can also view the result image.
+---
 
 [![Latest Version](https://img.shields.io/github/release/goxr3plus/XR3Capture.svg?style=flat-square)](https://github.com/goxr3plus/XR3Capture/releases)
 [![GitHub contributors][contributors-image]][contributors-url]
@@ -13,6 +21,9 @@ Is a JavaFX application which allows you to take screen shots of your computer a
 [contributors-image]: https://img.shields.io/github/contributors/goxr3plus/XR3Capture.svg
 
 [jitpack-url]: https://jitpack.io/#goxr3plus/XR3Capture
+
+> Release V101 and above are under work for Java 10 and Java 11 modularization 
+
 
 ### Add it to your project using JitPack :
 
